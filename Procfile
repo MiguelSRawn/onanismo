@@ -1,0 +1,1 @@
+web: java -jar onanismo\target\onanismo-0.0.1-SNAPSHOT.jar
