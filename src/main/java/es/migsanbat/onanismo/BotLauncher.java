@@ -5,8 +5,6 @@ import java.io.File;
 import javax.security.auth.login.LoginException;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.PropertyException;
 import javax.xml.bind.Unmarshaller;
 
 import com.jagrosh.jdautilities.command.CommandClient;
