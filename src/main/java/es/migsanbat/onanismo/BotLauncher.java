@@ -1,6 +1,10 @@
 package es.migsanbat.onanismo;
 
 import java.io.File;
+import java.net.URISyntaxException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 import javax.security.auth.login.LoginException;
 import javax.xml.bind.JAXBContext;
@@ -18,13 +22,15 @@ import net.dv8tion.jda.core.JDABuilder;
 
 public class BotLauncher {
 
-	public static void main(String[] args) throws LoginException, InterruptedException {
+	public static void main(String[] args) throws LoginException, InterruptedException, URISyntaxException, SQLException {
 
 		// Cargando configuración del bot
 		Config config = loadConfig();
 		String token = config.getToken();
 		String ownerId = config.getOwnerId();
 		
+		Connection conn = getConnection();
+		System.out.println(conn.getSchema());
 
 		/*
 		 * Inicio del bot
@@ -62,6 +68,10 @@ public class BotLauncher {
 			e.printStackTrace();
 		}
 		return config;
+	}
+	private static Connection getConnection() throws URISyntaxException, SQLException {
+	    String dbUrl = System.getenv("JDBC_DATABASE_URL");
+	    return DriverManager.getConnection(dbUrl);
 	}
 
 }
