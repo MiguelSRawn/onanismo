@@ -30,8 +30,12 @@ public class BotLauncher {
 		String ownerId = config.getOwnerId();
 		
 		Connection conn = getConnection();
-		System.out.println(conn.getSchema());
-
+		if(conn.getSchema()!=null&&!conn.getSchema().isEmpty())
+			System.out.println(conn.getSchema());
+		else if(conn!=null)
+			System.out.println("Null");
+		else
+			System.out.println("wops?");
 		/*
 		 * Inicio del bot
 		 */
