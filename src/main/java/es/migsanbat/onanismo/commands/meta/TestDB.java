@@ -1,5 +1,6 @@
 package es.migsanbat.onanismo.commands.meta;
 
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -25,8 +26,9 @@ public class TestDB extends Command {
 
 	@Override
 	protected void execute(CommandEvent event) {
+		createAndStoreEvent("test");
 		List lista = this.list();
-		Onanismo onanismo=(Onanismo) lista.get(0);
+		Onanismo onanismo=(Onanismo) lista.get(lista.size()-1);
 		event.reply("Onanismo: "+onanismo.getTitle());
 	}
 	private List list() {
@@ -35,5 +37,17 @@ public class TestDB extends Command {
         List result = session.createQuery("from Onanismo").list();
         session.getTransaction().commit();
         return result;
+    }
+	private static void createAndStoreEvent(String title) {
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+ 
+        Onanismo onanismo = new Onanismo();
+        Date date = new Date();
+        onanismo.setTitle(date.toString());
+        
+        session.save(onanismo);
+ 
+        session.getTransaction().commit();
     }
 }

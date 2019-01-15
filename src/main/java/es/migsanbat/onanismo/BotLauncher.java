@@ -39,7 +39,7 @@ public class BotLauncher {
 		String token = config.getToken();
 		String ownerId = config.getOwnerId();
 		
-		createAndStoreEvent("test");
+		
 		/*
 		 * Inicio del bot
 		 */
@@ -78,18 +78,7 @@ public class BotLauncher {
 		}
 		return config;
 	}
-	 private static void createAndStoreEvent(String title) {
-	        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-	        session.beginTransaction();
 	 
-	        Onanismo onanismo = new Onanismo();
-	        Date date = new Date();
-	        onanismo.setTitle(date.toString());
-	        
-	        session.save(onanismo);
-	 
-	        session.getTransaction().commit();
-	    }
 	 
 
 }
