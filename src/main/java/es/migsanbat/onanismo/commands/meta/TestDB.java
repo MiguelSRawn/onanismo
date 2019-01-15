@@ -27,7 +27,7 @@ public class TestDB extends Command {
 	protected void execute(CommandEvent event) {
 		List lista = this.list();
 		Onanismo onanismo=(Onanismo) lista.get(0);
-		event.reply("Onanismo: "+onanismo.toString());
+		event.reply("Onanismo: "+onanismo.getTitle());
 	}
 	private List list() {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();

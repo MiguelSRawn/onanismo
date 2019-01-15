@@ -7,7 +7,9 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import javax.security.auth.login.LoginException;
 import javax.xml.bind.JAXBContext;
@@ -81,7 +83,8 @@ public class BotLauncher {
 	        session.beginTransaction();
 	 
 	        Onanismo onanismo = new Onanismo();
-	        onanismo.setTitle(title);
+	        Date date = new Date();
+	        onanismo.setTitle(date.toString());
 	        
 	        session.save(onanismo);
 	 
