@@ -21,6 +21,7 @@ import com.jagrosh.jdautilities.command.CommandClientBuilder;
 import com.jagrosh.jdautilities.command.Command.Category;
 
 import es.migsanbat.onanismo.commands.meta.Ping;
+import es.migsanbat.onanismo.commands.meta.TestDB;
 import es.migsanbat.onanismo.domain.Config;
 import es.migsanbat.onanismo.domain.Onanismo;
 import es.migsanbat.onanismo.util.HibernateUtil;
@@ -48,6 +49,7 @@ public class BotLauncher {
 		final Category meta = new Category("Meta");
 		// Comandos Meta
 		builder.addCommands(new Ping(meta));
+		builder.addCommands(new TestDB(meta));
 		
 		builder.setOwnerId(ownerId);
 		final CommandClient client = builder.build();
@@ -85,12 +87,6 @@ public class BotLauncher {
 	 
 	        session.getTransaction().commit();
 	    }
-	 private List list() {
-	        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-	        session.beginTransaction();
-	        List result = session.createQuery("from Onanismo").list();
-	        session.getTransaction().commit();
-	        return result;
-	    }
+	 
 
 }
