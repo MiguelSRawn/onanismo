@@ -4,12 +4,17 @@ import java.io.File;
 import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.List;
 
 import javax.security.auth.login.LoginException;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
+
+import org.hibernate.Session;
 
 import com.jagrosh.jdautilities.command.CommandClient;
 import com.jagrosh.jdautilities.command.CommandClientBuilder;
@@ -17,6 +22,8 @@ import com.jagrosh.jdautilities.command.Command.Category;
 
 import es.migsanbat.onanismo.commands.meta.Ping;
 import es.migsanbat.onanismo.domain.Config;
+import es.migsanbat.onanismo.domain.Onanismo;
+import es.migsanbat.onanismo.util.HibernateUtil;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.JDABuilder;
 
@@ -29,13 +36,7 @@ public class BotLauncher {
 		String token = config.getToken();
 		String ownerId = config.getOwnerId();
 		
-		Connection conn = getConnection();
-		if(conn.getSchema()!=null&&!conn.getSchema().isEmpty())
-			System.out.println(conn.getSchema());
-		else if(conn!=null)
-			System.out.println("Null");
-		else
-			System.out.println("wops?");
+		createAndStoreEvent("test");
 		/*
 		 * Inicio del bot
 		 */
@@ -73,9 +74,23 @@ public class BotLauncher {
 		}
 		return config;
 	}
-	private static Connection getConnection() throws URISyntaxException, SQLException {
-	    String dbUrl = System.getenv("JDBC_DATABASE_URL");
-	    return DriverManager.getConnection(dbUrl);
-	}
+	 private static void createAndStoreEvent(String title) {
+	        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+	        session.beginTransaction();
+	 
+	        Onanismo onanismo = new Onanismo();
+	        onanismo.setTitle(title);
+	        
+	        session.save(onanismo);
+	 
+	        session.getTransaction().commit();
+	    }
+	 private List list() {
+	        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+	        session.beginTransaction();
+	        List result = session.createQuery("from Onanismo").list();
+	        session.getTransaction().commit();
+	        return result;
+	    }
 
 }
