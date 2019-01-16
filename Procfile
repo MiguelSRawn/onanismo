@@ -1,1 +1,1 @@
-web: java -Dserver.port=$PORT -jar target/onanismo-0.0.1-jar-with-dependencies.jar
+web: java -jar target/onanismo-0.0.1-jar-with-dependencies.jar
