@@ -13,6 +13,7 @@ public class Config {
 
 	private String token;
 	private String ownerId;
+	private Long cost;
 	
 	public Config() {
 		
@@ -37,6 +38,15 @@ public class Config {
 	public void setOwnerId(String ownerId) {
 		this.ownerId = ownerId;
 	}
+	@XmlElement(name = "cost")
+	public Long getCost() {
+		return cost;
+	}
+	public void setCost(Long coste) {
+		this.cost = coste;
+	}
+	
+	
 	
 	
 

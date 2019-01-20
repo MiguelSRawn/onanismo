@@ -14,7 +14,6 @@ import javax.persistence.Table;
 @Table(name = "DBTEST")
 public class DBTest implements Serializable {
 	
-	
 	private static final long serialVersionUID = 8919932664078230993L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

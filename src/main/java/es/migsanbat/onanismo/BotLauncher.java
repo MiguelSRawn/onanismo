@@ -24,6 +24,7 @@ import com.jagrosh.jdautilities.command.Command.Category;
 
 import es.migsanbat.onanismo.commands.meta.Ping;
 import es.migsanbat.onanismo.commands.meta.TestDB;
+import es.migsanbat.onanismo.commands.saldo.Balance;
 import es.migsanbat.onanismo.domain.Config;
 import es.migsanbat.onanismo.domain.Onanismo;
 import es.migsanbat.onanismo.util.HibernateUtil;
@@ -38,8 +39,12 @@ public class BotLauncher {
 		Config config = loadConfig();
 		String token = System.getenv("TOKEN");
 		String ownerId = System.getenv("OWNER_ID");
+		Long coste = config.getCost();
 		
-		
+		System.out.println("Loading with config: \n"
+				+ "Token: "+token+" \n"
+				+ "OwnerId: "+ownerId+" \n"
+				+ "Coste: "+coste);
 		/*
 		 * Inicio del bot
 		 */
@@ -49,9 +54,12 @@ public class BotLauncher {
 		// Categorias
 		final Category fap = new Category("Fap");
 		final Category meta = new Category("Meta");
+		final Category currency = new Category("Currency");
 		// Comandos Meta
 		builder.addCommands(new Ping(meta));
 		builder.addCommands(new TestDB(meta));
+		//Comandos currency
+		builder.addCommand(new Balance(currency));
 		
 		builder.setOwnerId(ownerId);
 		final CommandClient client = builder.build();
