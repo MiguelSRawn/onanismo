@@ -47,7 +47,7 @@ public class TestDB extends Command {
 	private List<DBTest> list() {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
-        List<DBTest> result = session.createQuery("from DBTEST").list();
+        List<DBTest> result = session.createQuery("from DBTest").list();
         session.getTransaction().commit();
         return result;
     }

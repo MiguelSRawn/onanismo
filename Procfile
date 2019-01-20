@@ -1,1 +1,1 @@
-web: java -jar target/onanismo-0.0.1-jar-with-dependencies.jar
+worker: java -jar target/onanismo-0.0.1-jar-with-dependencies.jar
