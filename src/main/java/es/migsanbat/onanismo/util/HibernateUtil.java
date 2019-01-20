@@ -11,7 +11,6 @@ import org.hibernate.service.ServiceRegistry;
 
 public class HibernateUtil {
 	 private static final SessionFactory sessionFactory = buildSessionFactory();
-	 private static ServiceRegistry serviceRegistry;
 	 
 	    private static SessionFactory buildSessionFactory() {
 	        try {
@@ -25,7 +24,6 @@ public class HibernateUtil {
 	            }
 	            ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").applySettings(
 	            		jdbcUrlSettings).build();
-	            System.out.println("Conectando a "+configuration.getProperty("connection.url"));
 	            return configuration.buildSessionFactory(serviceRegistry);
 	        }
 	        catch (Throwable ex) {
