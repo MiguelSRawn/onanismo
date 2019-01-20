@@ -1,5 +1,7 @@
 package es.migsanbat.onanismo.util;
 
+import java.util.Properties;
+
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
@@ -9,7 +11,10 @@ public class HibernateUtil {
 	    private static SessionFactory buildSessionFactory() {
 	        try {
 	            // Create the SessionFactory from hibernate.cfg.xml
-	            return new Configuration().configure().buildSessionFactory();
+	        	Configuration config =new Configuration().configure();
+	        	config.setProperty("connection.url", System.getenv("DATABASE_URL"));
+	        	System.out.println("Conectando a "+config.getProperty("connection.url"));
+	            return config.buildSessionFactory();
 	        }
 	        catch (Throwable ex) {
 	            // Make sure you log the exception, as it might be swallowed
