@@ -23,6 +23,7 @@ public class TestDB extends Command {
 		this.aliases = new String[] { "db" };
 		this.help = "Comando para comprobar la disponibilidad de la db";
 		this.guildOnly=false;
+		this.ownerCommand=true;
 	}
 
 	@Override

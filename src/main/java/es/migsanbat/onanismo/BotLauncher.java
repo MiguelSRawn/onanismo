@@ -36,8 +36,8 @@ public class BotLauncher {
 
 		// Cargando configuración del bot
 		Config config = loadConfig();
-		String token = config.getToken();
-		String ownerId = config.getOwnerId();
+		String token = System.getenv("TOKEN");
+		String ownerId = System.getenv("OWNER_ID");
 		
 		
 		/*
