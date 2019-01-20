@@ -16,7 +16,7 @@ public class Balance extends Command {
 
 	@Override
 	protected void execute(CommandEvent event) {
-		event.reply("Test");	
+		event.reply(event.getArgs());
 	}
 
 }
