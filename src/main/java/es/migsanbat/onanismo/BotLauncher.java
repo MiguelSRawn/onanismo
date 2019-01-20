@@ -37,14 +37,14 @@ public class BotLauncher {
 
 		// Cargando configuración del bot
 		Config config = loadConfig();
-		String token = System.getenv("TOKEN");
-		String ownerId = System.getenv("OWNER_ID");
-		Long coste = Long.valueOf(config.getCost());
+		String token = System.getenv("TOKEN")==null?config.getToken():System.getenv("TOKEN");
+		String ownerId = System.getenv("OWNER_ID")==null?config.getOwnerId():System.getenv("OWNER_ID");
+		Long coste = config.getCost()!=null?Long.valueOf(config.getCost()):50l;
 		
 		System.out.println("Loading with config: \n"
 				+ "Token: "+token+" \n"
 				+ "OwnerId: "+ownerId+" \n"
-				+ "Coste: "+coste);
+				+ "Coste: "+coste.toString());
 		/*
 		 * Inicio del bot
 		 */

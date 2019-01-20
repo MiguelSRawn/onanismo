@@ -33,6 +33,7 @@
  
         <mapping class="es.migsanbat.onanismo.domain.Onanismo" />
         <mapping class="es.migsanbat.onanismo.domain.DBTest" />
+        <mapping class="es.migsanbat.onanismo.domain.User" />
         
  
     </session-factory>
