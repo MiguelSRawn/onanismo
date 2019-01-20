@@ -38,8 +38,8 @@ public class TestDB extends Command {
 			event.reply("Connection date: "+dbTest.getDate());
 			event.reply("Everything went ok");
 		}catch (Exception e) {
-			event.reply("Wops, something failed, check the logs");
-			System.out.println(e.getMessage()+", "+e);
+			event.reply("ERROR: Wops, something failed, check the logs");
+			System.err.println(e.getMessage()+", "+e);
 		}
 		
 		

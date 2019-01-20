@@ -32,6 +32,7 @@
         <property name="hbm2ddl.auto">update</property>
  
         <mapping class="es.migsanbat.onanismo.domain.Onanismo" />
+        <mapping class="es.migsanbat.onanismo.domain.DBTest" />
         
  
     </session-factory>
