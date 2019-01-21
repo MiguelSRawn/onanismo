@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <config>
-	<token>DEPRECATED</token>
-	<ownerId>DEPRECATED</ownerId>
-	<cost>0.2</cost>
+	<token>TOKEN</token>
+	<ownerId>OWNERID</ownerId>
+	<cost>20</cost>
 </config>
