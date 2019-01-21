@@ -38,6 +38,7 @@ public class Cartera implements Serializable{
 		saldoPropio = 0l;
 		saldoRecibido = 0l;
 		usuario = user;
+		id=user.getId();
 	}
 	public Long getId() {
 		return id;
