@@ -23,4 +23,20 @@ public class UserRepository {
 			
 		}
 	}
+
+	public static void persist(User user) throws Exception {
+		try {
+			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+	        session.beginTransaction();
+	        
+	        session.persist(user);
+	 
+	        session.getTransaction().commit();
+		}catch (Exception e) {
+			HibernateUtil.getSessionFactory().getCurrentSession().getTransaction().rollback();
+			throw new Exception(e.getMessage(),e);
+		}finally {
+			
+		}
+	}
 }
