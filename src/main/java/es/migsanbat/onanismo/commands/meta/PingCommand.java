@@ -4,9 +4,9 @@ import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
 import com.jagrosh.jdautilities.command.Command.Category;
 
-public class Ping extends Command {
+public class PingCommand extends Command {
 
-	public Ping(Category meta) {
+	public PingCommand(Category meta) {
 		this.name = "ping";
 		this.category = meta;
 		this.aliases = new String[] { "test", "demo" };

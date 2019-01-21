@@ -15,9 +15,9 @@ import es.migsanbat.onanismo.util.HibernateUtil;
 
 import com.jagrosh.jdautilities.command.Command.Category;
 
-public class TestDB extends Command {
+public class TestDBCommand extends Command {
 
-	public TestDB(Category meta) {
+	public TestDBCommand(Category meta) {
 		this.name = "testDB";
 		this.category = meta;
 		this.aliases = new String[] { "db" };

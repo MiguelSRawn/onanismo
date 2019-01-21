@@ -22,9 +22,9 @@ import com.jagrosh.jdautilities.command.CommandClient;
 import com.jagrosh.jdautilities.command.CommandClientBuilder;
 import com.jagrosh.jdautilities.command.Command.Category;
 
-import es.migsanbat.onanismo.commands.meta.Ping;
-import es.migsanbat.onanismo.commands.meta.TestDB;
-import es.migsanbat.onanismo.commands.saldo.Balance;
+import es.migsanbat.onanismo.commands.meta.PingCommand;
+import es.migsanbat.onanismo.commands.meta.TestDBCommand;
+import es.migsanbat.onanismo.commands.saldo.BalanceCommand;
 import es.migsanbat.onanismo.domain.Config;
 import es.migsanbat.onanismo.domain.Onanismo;
 import es.migsanbat.onanismo.util.HibernateUtil;
@@ -56,10 +56,10 @@ public class BotLauncher {
 		final Category meta = new Category("Meta");
 		final Category currency = new Category("Currency");
 		// Comandos Meta
-		builder.addCommands(new Ping(meta));
-		builder.addCommands(new TestDB(meta));
+		builder.addCommands(new PingCommand(meta));
+		builder.addCommands(new TestDBCommand(meta));
 		//Comandos currency
-		builder.addCommand(new Balance(currency));
+		builder.addCommand(new BalanceCommand(currency));
 		
 		builder.setOwnerId(ownerId);
 		final CommandClient client = builder.build();

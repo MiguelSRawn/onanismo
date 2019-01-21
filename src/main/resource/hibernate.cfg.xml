@@ -31,8 +31,10 @@
         <!-- Drop and re-create the database schema on startup -->
         <property name="hbm2ddl.auto">update</property>
  
+ 		<mapping class="es.migsanbat.onanismo.domain.Cartera" />
+ 		<mapping class="es.migsanbat.onanismo.domain.DBTest" />
         <mapping class="es.migsanbat.onanismo.domain.Onanismo" />
-        <mapping class="es.migsanbat.onanismo.domain.DBTest" />
+        <mapping class="es.migsanbat.onanismo.domain.Transaccion" />
         <mapping class="es.migsanbat.onanismo.domain.User" />
         
  
