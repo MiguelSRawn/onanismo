@@ -32,7 +32,7 @@ public class User implements Serializable {
 	private String name;
 	@Column(name="discordId")
 	private String discordId;
-	@OneToMany(mappedBy="user")
+	@OneToMany(mappedBy="usuario")
 	private List<Onanismo> onanismos;
 	@OneToOne(cascade = CascadeType.MERGE,mappedBy="usuario")
 	@PrimaryKeyJoinColumn
