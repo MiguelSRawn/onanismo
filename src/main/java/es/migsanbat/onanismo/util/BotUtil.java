@@ -15,7 +15,7 @@ private static String ownerId =System.getenv("OWNER_ID");
 	}
 	
 	public void readyMessage(ReadyEvent event,String message) {
-		event.getJDA().asClient().getFriendById(ownerId).getUser().openPrivateChannel().queue((channel) ->
+		event.getJDA().getUserById(ownerId).openPrivateChannel().queue((channel) ->
         {
             channel.sendMessage(message).queue();
         });
