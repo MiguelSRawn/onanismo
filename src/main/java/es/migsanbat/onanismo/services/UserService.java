@@ -24,7 +24,7 @@ public class UserService {
 		try {
 			res = UserRepository.findByDiscordId(discordId);
 			for(User us:res) {
-				System.out.println("Usuario: "+us.toString());
+				System.out.println("Usuario: "+us.getName());
 			}
 		} catch (Exception e) {
 			
@@ -40,7 +40,6 @@ public class UserService {
 			aux = findByDiscordId(discordId);
 			if(!aux.isEmpty()) {
 				res =  aux.get(0);
-				System.out.println(res.toString());
 			}else {
 				System.out.println("The user doesn't have an account");
 			}

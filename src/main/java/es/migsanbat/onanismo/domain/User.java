@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,7 +33,7 @@ public class User implements Serializable {
 	private String name;
 	@Column(name="discordId")
 	private String discordId;
-	@OneToMany(mappedBy="usuario")
+	@OneToMany(mappedBy="usuario",fetch=FetchType.EAGER)
 	private List<Onanismo> onanismos;
 	@OneToOne(cascade = CascadeType.MERGE,mappedBy="usuario")
 	@PrimaryKeyJoinColumn
