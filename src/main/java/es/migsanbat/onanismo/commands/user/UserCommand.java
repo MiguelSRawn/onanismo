@@ -69,6 +69,8 @@ public class UserCommand extends Command {
 				}
 				
 				break;
+			default:
+				reply = "Wops, comando no reconocido";
 			}
 					
 		}else {
