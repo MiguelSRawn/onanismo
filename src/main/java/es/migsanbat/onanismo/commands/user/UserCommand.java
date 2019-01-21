@@ -12,7 +12,7 @@ import com.jagrosh.jdautilities.command.Command.Category;
 public class UserCommand extends Command {
 
 	public UserCommand(Category meta) {
-		this.name = "user";
+		this.name = "user test";
 		this.category = meta;
 		this.aliases = new String[] { "usuario" };
 		this.help = "Comandos relacionados con el usuario";
@@ -70,7 +70,7 @@ public class UserCommand extends Command {
 				
 				break;
 			default:
-				reply = "Wops, comando no reconocido";
+				reply = "Wops, comando no reconocido. Argumento: "+args[0];
 			}
 					
 		}else {
