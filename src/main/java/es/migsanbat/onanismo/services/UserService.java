@@ -36,6 +36,7 @@ public class UserService {
 		User res = null;
 		List<User> aux;
 		try {
+			System.out.println("Searching user with discord id :"+discordId);
 			aux = findByDiscordId(discordId);
 			if(!aux.isEmpty()) {
 				res =  aux.get(0);
