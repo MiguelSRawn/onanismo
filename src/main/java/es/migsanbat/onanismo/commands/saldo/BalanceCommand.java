@@ -4,6 +4,8 @@ import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
 import com.jagrosh.jdautilities.command.Command.Category;
 
+import es.migsanbat.onanismo.services.CarteraService;
+
 public class BalanceCommand extends Command {
 
 	public BalanceCommand(Category meta) {
@@ -17,6 +19,8 @@ public class BalanceCommand extends Command {
 	@Override
 	protected void execute(CommandEvent event) {
 		String[] args = event.getArgs().split(" ");
+		String funds;
+		String reply ="";
 		if(args.length>.0) {
 			switch(args[0]) {
 			case "":
@@ -27,6 +31,15 @@ public class BalanceCommand extends Command {
 			case "ver":
 				break;
 			case "ingresar":
+			case "add":
+			case "añadir":
+				if(args.length>1) {
+					funds = args[1];
+					CarteraService.get().addBalance(Long.decode(funds), event.getAuthor().getId());
+				}else {
+					reply = "Debes escribir el número de centimos a ingresas Ex: '+saldo add <centimos>";
+				}
+				
 				break;
 			}
 					

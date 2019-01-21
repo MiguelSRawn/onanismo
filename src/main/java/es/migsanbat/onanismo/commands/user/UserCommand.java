@@ -74,7 +74,7 @@ public class UserCommand extends Command {
 			}
 					
 		}else {
-			reply = "Wops, comando no reconocido";
+			reply = "Escribe '+user help' para ver la lista de comandos de user";
 		}
 		event.reply(reply);
 	}
