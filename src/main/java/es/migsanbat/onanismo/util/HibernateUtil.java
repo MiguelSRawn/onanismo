@@ -2,7 +2,6 @@ package es.migsanbat.onanismo.util;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Properties;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;

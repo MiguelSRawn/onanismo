@@ -73,7 +73,7 @@ public class BotLauncher {
 		 * exclusivamente de los comandos y EventListener.class que es una clase propia
 		 * a la que se pueden añadir eventos personalizados
 		 */
-		final JDA jda = new JDABuilder(token).addEventListener(client).addEventListener(new EventListener()).build();
+		final JDA jda = new JDABuilder(token).addEventListener(client).addEventListener().build();
 		// Pausa la lectura del código hasta que se inicio el evento "ready"
 		jda.awaitReady();
 	}

@@ -26,6 +26,7 @@ public class UserCommand extends Command {
 		if(args.length>.0) {
 			switch(args[0]) {
 			case "":
+				reply = "Escribe 'user' help para ver la lista de comandos de user";
 				break;
 			case "help":
 				break;
@@ -35,6 +36,7 @@ public class UserCommand extends Command {
 			case "ingresar":
 			case "añadir":
 			case "crear":
+			case "create":
 				user =UserService.get().createAndSave(event.getAuthor().getId(), event.getAuthor().getName());
 				reply = "Usuario creado: \n"
 						+ "		Nombre: "+user.getName()+"\n"
