@@ -15,7 +15,7 @@ import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "USER")
+@Table(name = "USUARIO")
 public class User implements Serializable {
 
 	private static final long serialVersionUID = -6995855897691147578L;

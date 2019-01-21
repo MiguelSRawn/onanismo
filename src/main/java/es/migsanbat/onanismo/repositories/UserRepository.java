@@ -17,6 +17,7 @@ public class UserRepository {
 	 
 	        session.getTransaction().commit();
 		}catch (Exception e) {
+			HibernateUtil.getSessionFactory().getCurrentSession().getTransaction().rollback();
 			throw new Exception(e.getMessage(),e);
 		}finally {
 			

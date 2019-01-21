@@ -24,7 +24,7 @@ public class Onanismo implements Serializable{
 	@Column(name="id")
 	private Long id;
 	@ManyToOne()
-	private User user;
+	private User usuario;
 	@Column(name="fecha")
 	private Date fecha;
 	
@@ -38,10 +38,10 @@ public class Onanismo implements Serializable{
 		this.id = id;
 	}
 	public User getUser() {
-		return user;
+		return usuario;
 	}
 	public void setUser(User user) {
-		this.user = user;
+		this.usuario = user;
 	}
 	public Date getFecha() {
 		return fecha;
