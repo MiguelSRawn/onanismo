@@ -53,7 +53,7 @@ public class UserRepository {
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 	        session.beginTransaction();
 	        
-	        String hql = "from USUARIO u where u u.discordId = :discordId";
+	        String hql = "from USUARIO u where u.discordId = :discordId";
 	        Query<?> query = session.createQuery(hql);
 	        query.setParameter("discordId", discordId);
 	        System.out.println("Executing query '"+query.toString()+"'");
