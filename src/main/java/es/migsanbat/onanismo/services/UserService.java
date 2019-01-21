@@ -1,6 +1,7 @@
 package es.migsanbat.onanismo.services;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import es.migsanbat.onanismo.domain.Cartera;
 import es.migsanbat.onanismo.domain.Onanismo;
@@ -16,6 +17,30 @@ public class UserService {
 			instancia = new UserService();
 		}
 		return instancia;
+	}
+	public List<User> findByDiscordId(String discordId) {
+		List<User> res = null;
+		
+		try {
+			res = UserRepository.findByDiscordId(discordId);
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
+		return res;
+	}
+	public User findOneByDiscordId(String discordId) {
+		User res = null;
+		List<User> aux;
+		try {
+			aux = findByDiscordId(discordId);
+			if(!aux.isEmpty()) {
+				res =  aux.get(0);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return res;
 	}
 	public User createAndSave(String discordId,String name) {
 		User res;

@@ -37,10 +37,18 @@ public class UserCommand extends Command {
 			case "añadir":
 			case "crear":
 			case "create":
-				user =UserService.get().createAndSave(event.getAuthor().getId(), event.getAuthor().getName());
-				reply = "Usuario creado: \n"
-						+ "		Nombre: "+user.getName()+"\n"
-						+ "Bienvenid@ al mundo de las pajas!";
+				user = UserService.get().findOneByDiscordId(event.getAuthor().getId());
+				if(user==null) {
+					user =UserService.get().createAndSave(event.getAuthor().getId(), event.getAuthor().getName());
+					reply = "Usuario creado: \n"
+							+ "		Nombre: "+user.getName()+"\n"
+							+ "Bienvenid@ al mundo de las pajas!";
+				}else {
+					reply = "Ya tienes usuario! \n"
+							+ "		Nombre: "+user.getName()+"\n"
+							+ "Escribe +help para ver la lista de comandos";
+				}
+				
 				break;
 			}
 					
