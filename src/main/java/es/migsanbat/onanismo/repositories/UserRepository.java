@@ -56,12 +56,14 @@ public class UserRepository {
 	        String hql = "from USUARIO u where u u.discordId = :discordId";
 	        Query<?> query = session.createQuery(hql);
 	        query.setParameter("discordId", discordId);
+	        System.out.println("Executing query '"+query.toString()+"'");
 	        aux = query.list();
 	        res = BotUtil.get().castList(User.class, aux);
 	 
 	        session.getTransaction().commit();
 		}catch (Exception e) {
 			HibernateUtil.getSessionFactory().getCurrentSession().getTransaction().rollback();
+			System.out.println("WARNING: Rolled back");
 			throw new Exception(e.getMessage(),e);
 		}finally {
 			
