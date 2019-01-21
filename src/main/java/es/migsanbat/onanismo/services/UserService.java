@@ -72,8 +72,6 @@ public class UserService {
 		cartera = new Cartera(res);
 		res.setCartera(cartera);
 		
-		
-		res = this.save(res);
 		cartera = CarteraService.get().save(cartera);
 		} catch (Exception e) {
 			e.printStackTrace();
