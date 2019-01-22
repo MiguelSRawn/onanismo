@@ -26,8 +26,14 @@ public class CarteraService {
 	}
 
 	public Cartera save(Cartera cartera) {
+		Cartera res = null;
 		try {
-			System.out.println("save(): "+cartera.getSaldoPropio());
+			System.out.println("save(Cartera): \n"
+					+ "		Usuario discordId: "+cartera.getUsuario().getDiscordId()+"\n"
+					+ "		Usuario id: "+cartera.getUsuario().getId()+"\n"
+					+ "		Cartera id: "+cartera.getId()+"\n"
+					+ "		Saldo propio: "+cartera.getSaldoPropio()+"\n"
+					+ "		Saldo dado: "+cartera.getSaldoDado()+"\n");
 			CarteraRepository.save(cartera);
 		} catch (Exception e) {
 			e.printStackTrace();
