@@ -44,8 +44,9 @@ public class BalanceCommand extends Command {
 				}else {
 					reply = "Debes escribir el número de centimos a ingresas Ex: '+saldo add <centimos>'";
 				}
-				
 				break;
+			default:
+				reply = "Wops, comando no reconocido. Argumento: "+args[0];
 			}
 					
 		}else {
