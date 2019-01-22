@@ -23,7 +23,7 @@ public class CarteraService {
 	public Cartera removeBalance(Integer num,String discordId) throws Exception {
 		Cartera res;
 		Integer saldoPropio, saldoRecibido, subAux=0;
-		System.out.println("addBalance(): "+num.toString()+", "+discordId);
+		System.out.println("removeBalance(): "+num.toString()+", "+discordId);
 		res = findOneByDiscordId(discordId);
 		saldoRecibido = res.getSaldoRecibido();
 		saldoPropio = res.getSaldoPropio();

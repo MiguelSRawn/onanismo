@@ -17,6 +17,7 @@ public class OnanismoService {
 		Onanismo res =null;
 		Integer cost = ConfigService.get().getConfig().getCost();
 		Cartera cartera = CarteraService.get().findOneByDiscordId(discordId);
+		System.out.println("Cartera found: "+cartera.getId());
 		if(cartera.getSaldoDisponible()>cost) {
 			CarteraService.get().removeBalance(cost, discordId);
 		}else {
