@@ -28,6 +28,7 @@ import es.migsanbat.onanismo.commands.saldo.BalanceCommand;
 import es.migsanbat.onanismo.commands.user.UserCommand;
 import es.migsanbat.onanismo.domain.Config;
 import es.migsanbat.onanismo.domain.Onanismo;
+import es.migsanbat.onanismo.services.ConfigService;
 import es.migsanbat.onanismo.util.HibernateUtil;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.JDABuilder;
@@ -37,10 +38,10 @@ public class BotLauncher {
 	public static void main(String[] args) throws LoginException, InterruptedException, URISyntaxException, SQLException {
 
 		// Cargando configuración del bot
-		Config config = loadConfig();
-		String token = System.getenv("TOKEN")==null?config.getToken():System.getenv("TOKEN");
-		String ownerId = System.getenv("OWNER_ID")==null?config.getOwnerId():System.getenv("OWNER_ID");
-		Long coste = config.getCost()!=null?Long.valueOf(config.getCost()):50l;
+		Config config = ConfigService.get().loadConfig().addHerokuConfig().getConfig();
+		String token = config.getToken();
+		String ownerId = config.getOwnerId();
+		Long coste = config.getCost();
 		
 		System.out.println("Loading with config: \n"
 				+ "Token: "+token+" \n"
@@ -77,20 +78,5 @@ public class BotLauncher {
 		// Pausa la lectura del código hasta que se inicio el evento "ready"
 		jda.awaitReady();
 	}
-
-	private static Config loadConfig() {
-		Config config = null;
-		try {
-			JAXBContext context = JAXBContext.newInstance(Config.class);
-			Unmarshaller unmarshaller = context.createUnmarshaller();
-			config = (Config) unmarshaller.unmarshal(new File("src/main/resource/local_config.xml"));
-
-		} catch (JAXBException e) {
-			e.printStackTrace();
-		}
-		return config;
-	}
-	 
-	 
 
 }

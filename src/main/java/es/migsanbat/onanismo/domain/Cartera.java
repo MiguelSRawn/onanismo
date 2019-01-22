@@ -73,6 +73,19 @@ public class Cartera implements Serializable{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
+	public String createReply() {
+		String reply ="		Usuario discordId: "+this.getUsuario().getDiscordId()+"\n"
+				+ "		Usuario id: "+this.getUsuario().getId()+"\n"
+				+ "		this id: "+this.getId()+"\n"
+				+ "		Saldo propio: "+this.getSaldoPropio()+"\n"
+				+ "		Saldo dado: "+this.getSaldoDado()+"\n";
+		return reply;
+	}
+	public Long getSaldoDisponible() {
+		return this.getSaldoPropio()+this.getSaldoRecibido();
+	}
+	public Long getHucha() {
+		return this.getSaldoPropio()+this.getSaldoDado();
+	}
 	
 }

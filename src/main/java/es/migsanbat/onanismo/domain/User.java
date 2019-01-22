@@ -89,6 +89,12 @@ public class User implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
+	public String createReply() {
+		String reply ="		Nombre: "+this.getName()+"\n"
+				+ "		ID: "+this.getDiscordId()+"\n"
+				+ "		Saldo: "+this.getCartera().getSaldoPropio()+"\n"
+				+ "		Onanismos: "+this.getOnanismos().size()+"\n";
+		return reply;
+	}
 	
 }

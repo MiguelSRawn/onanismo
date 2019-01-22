@@ -37,6 +37,7 @@ public class BalanceCommand extends Command {
 					funds = args[1];
 					System.out.println("Adding funds: "+funds);
 					CarteraService.get().addBalance(Long.decode(funds), event.getAuthor().getId());
+					reply = "Se han añadido "+funds+" centimos.";
 				}else {
 					reply = "Debes escribir el número de centimos a ingresas Ex: '+saldo add <centimos>";
 				}

@@ -20,15 +20,19 @@ public class CarteraService {
 		res = saveOrUpdate(res);
 		return res;
 	}
+	public Cartera removeBalance(Long num,String discordId) {
+		Cartera res;
+		System.out.println("addBalance(): "+num.toString()+", "+discordId);
+		res = findOneByDiscordId(discordId);
+		res.setSaldoPropio(res.getSaldoPropio()-num);
+		res = saveOrUpdate(res);
+		return res;
+	}
 
 	public Cartera saveOrUpdate(Cartera cartera) {
 		try {
 			System.out.println("save(Cartera): \n"
-					+ "		Usuario discordId: "+cartera.getUsuario().getDiscordId()+"\n"
-					+ "		Usuario id: "+cartera.getUsuario().getId()+"\n"
-					+ "		Cartera id: "+cartera.getId()+"\n"
-					+ "		Saldo propio: "+cartera.getSaldoPropio()+"\n"
-					+ "		Saldo dado: "+cartera.getSaldoDado()+"\n");
+					+ cartera.createReply());
 			
 			CarteraRepository.saveOrUpdate(cartera);
 		} catch (Exception e) {

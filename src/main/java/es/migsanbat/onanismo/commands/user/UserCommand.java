@@ -45,10 +45,7 @@ public class UserCommand extends Command {
 					reply = "Usuario inexistente.";
 				}else {
 					reply = "Usuario encontrado: \n"
-							+ "		Nombre: "+user.getName()+"\n"
-							+ "		ID: "+user.getDiscordId()+"\n"
-							+ "		Saldo: "+user.getCartera().getSaldoPropio()+"\n"
-							+ "		Onanismos: "+user.getOnanismos().size()+"\n"
+							+ user.createReply()
 							+ "Escribe +help para ver la lista de comandos";
 				}
 				break;
@@ -60,11 +57,11 @@ public class UserCommand extends Command {
 				if(user==null) {
 					user =UserService.get().createAndSave(event.getAuthor().getId(), event.getAuthor().getName());
 					reply = "Usuario creado: \n"
-							+ "		Nombre: "+user.getName()+"\n"
+							+ user.createReply()
 							+ "Bienvenid@ al mundo de las pajas!";
 				}else {
 					reply = "Ya tienes usuario! \n"
-							+ "		Nombre: "+user.getName()+"\n"
+							+ user.createReply()
 							+ "Escribe +help para ver la lista de comandos";
 				}
 				
