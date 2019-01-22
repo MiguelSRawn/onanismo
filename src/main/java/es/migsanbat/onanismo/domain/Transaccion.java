@@ -30,7 +30,7 @@ public class Transaccion implements Serializable{
 	@ManyToOne()
 	private User benefactor;
 	@Column(name="balanza")
-	private Long balanza;
+	private Integer balanza;
 	public Transaccion() {
 		super();
 	}
@@ -52,10 +52,10 @@ public class Transaccion implements Serializable{
 	public void setBenefactor(User benefactor) {
 		this.benefactor = benefactor;
 	}
-	public Long getBalanza() {
+	public Integer getBalanza() {
 		return balanza;
 	}
-	public void setBalanza(Long balanza) {
+	public void setBalanza(Integer balanza) {
 		this.balanza = balanza;
 	}
 	public static long getSerialversionuid() {

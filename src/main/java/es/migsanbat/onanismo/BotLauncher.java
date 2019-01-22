@@ -42,7 +42,7 @@ public class BotLauncher {
 			Config config = ConfigService.get().loadConfig().addHerokuConfig().getConfig();
 			String token = config.getToken();
 			String ownerId = config.getOwnerId();
-			Long coste = config.getCost();
+			Integer coste = config.getCost();
 			
 			System.out.println("Loading with config: \n"
 					+ "Token: "+token+" \n"

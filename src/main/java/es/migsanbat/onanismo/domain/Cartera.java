@@ -23,20 +23,20 @@ public class Cartera implements Serializable{
 	@Column(name="id")
 	private Long id;
 	@Column(name="saldoPropio")
-	private Long saldoPropio;
+	private Integer saldoPropio;
 	@Column(name="saldoDado")
-	private Long saldoDado;
+	private Integer saldoDado;
 	@Column(name="saldoRecibido")
-	private Long saldoRecibido;
+	private Integer saldoRecibido;
 	@OneToOne
 	private User usuario;
 	public Cartera() {
 		super();
 	}
 	public Cartera(User user) {
-		saldoDado = 0l;
-		saldoPropio = 0l;
-		saldoRecibido = 0l;
+		saldoDado = 0;
+		saldoPropio = 0;
+		saldoRecibido = 0;
 		usuario = user;
 		id=user.getId();
 	}
@@ -46,22 +46,22 @@ public class Cartera implements Serializable{
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public Long getSaldoPropio() {
+	public Integer getSaldoPropio() {
 		return saldoPropio;
 	}
-	public void setSaldoPropio(Long saldoPropio) {
+	public void setSaldoPropio(Integer saldoPropio) {
 		this.saldoPropio = saldoPropio;
 	}
-	public Long getSaldoDado() {
+	public Integer getSaldoDado() {
 		return saldoDado;
 	}
-	public void setSaldoDado(Long saldoDado) {
+	public void setSaldoDado(Integer saldoDado) {
 		this.saldoDado = saldoDado;
 	}
-	public Long getSaldoRecibido() {
+	public Integer getSaldoRecibido() {
 		return saldoRecibido;
 	}
-	public void setSaldoRecibido(Long saldoRecibido) {
+	public void setSaldoRecibido(Integer saldoRecibido) {
 		this.saldoRecibido = saldoRecibido;
 	}
 	public User getUsuario() {
@@ -81,10 +81,10 @@ public class Cartera implements Serializable{
 				+ "		Saldo dado: "+this.getSaldoDado()+"\n";
 		return reply;
 	}
-	public Long getSaldoDisponible() {
+	public Integer getSaldoDisponible() {
 		return this.getSaldoPropio()+this.getSaldoRecibido();
 	}
-	public Long getHucha() {
+	public Integer getHucha() {
 		return this.getSaldoPropio()+this.getSaldoDado();
 	}
 	

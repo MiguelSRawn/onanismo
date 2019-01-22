@@ -13,7 +13,7 @@ public class Config {
 
 	private String token;
 	private String ownerId;
-	private Long cost;
+	private Integer cost;
 	
 	public Config() {
 		
@@ -39,10 +39,10 @@ public class Config {
 		this.ownerId = ownerId;
 	}
 	@XmlElement(name = "cost")
-	public Long getCost() {
+	public Integer getCost() {
 		return cost;
 	}
-	public void setCost(Long coste) {
+	public void setCost(Integer coste) {
 		this.cost = coste;
 	}
 	

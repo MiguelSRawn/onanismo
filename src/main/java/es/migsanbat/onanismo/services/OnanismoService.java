@@ -13,10 +13,13 @@ public class OnanismoService {
 		}
 		return instancia;
 	}
-	public Onanismo fap(String discordId) {
+	public Onanismo fap(String discordId) throws Exception {
 		Onanismo res =null;
+		Integer cost = ConfigService.get().getConfig().getCost();
 		Cartera cartera = CarteraService.get().findOneByDiscordId(discordId);
-		if(cartera.getSaldoDisponible()>ConfigService.get().getConfig().getCost()) {
+		if(cartera.getSaldoDisponible()>cost) {
+			CarteraService.get().removeBalance(cost, discordId);
+		}else {
 			
 		}
 		

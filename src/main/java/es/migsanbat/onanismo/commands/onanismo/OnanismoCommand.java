@@ -1,18 +1,19 @@
-package es.migsanbat.onanismo.commands.saldo;
+package es.migsanbat.onanismo.commands.onanismo;
 
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
 import com.jagrosh.jdautilities.command.Command.Category;
 
 import es.migsanbat.onanismo.services.CarteraService;
+import es.migsanbat.onanismo.services.OnanismoService;
 
-public class BalanceCommand extends Command {
+public class OnanismoCommand extends Command {
 
-	public BalanceCommand(Category meta) {
-		this.name = "balance";
+	public OnanismoCommand(Category meta) {
+		this.name = "fap";
 		this.category = meta;
-		this.aliases = new String[] { "saldo" };
-		this.help = "Comandos relacionados con el saldo";
+		this.aliases = new String[] { "paja","masturbación","onanismo" };
+		this.help = "Comandos relacionados con el acto de quererse mucho";
 		this.guildOnly=false;
 	}
 
@@ -23,8 +24,6 @@ public class BalanceCommand extends Command {
 		String reply ="";
 		if(args.length>0) {
 			switch(args[0]) {
-			case "":
-				break;
 			case "help":
 				break;
 			case "see":
@@ -33,16 +32,15 @@ public class BalanceCommand extends Command {
 			case "mostrar":
 				
 				break;
+			case "":
 			case "ingresar":
 			case "add":
 			case "añadir":
-				if(args.length>1) {
-					funds = args[1];
-					System.out.println("Adding funds: "+funds);
-					CarteraService.get().addBalance(Integer.decode(funds), event.getAuthor().getId());
-					reply = "Se han añadido "+funds+" centimos.";
-				}else {
-					reply = "Debes escribir el número de centimos a ingresas Ex: '+saldo add <centimos>'";
+				try {
+					OnanismoService.get().fap(event.getAuthor().getId());
+				} catch (Exception e) {
+					reply = e.getMessage();
+					e.printStackTrace();
 				}
 				break;
 			default:
