@@ -29,6 +29,8 @@ public class BalanceCommand extends Command {
 				break;
 			case "see":
 			case "ver":
+			case "show":
+			case "mostrar":
 				
 				break;
 			case "ingresar":
@@ -47,8 +49,9 @@ public class BalanceCommand extends Command {
 			}
 					
 		}else {
-			
+			reply = "Escribe '+saldo help' para ver la lista de comandos de saldo";
 		}
+		event.reply(reply);
 	}
 
 }

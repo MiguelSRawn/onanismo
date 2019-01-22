@@ -34,6 +34,8 @@ public class UserCommand extends Command {
 				break;
 			case "see":
 			case "ver":
+			case "show":
+			case "mostrar":
 				String discordId;
 				if(args.length>1) {
 					discordId = args[1];
