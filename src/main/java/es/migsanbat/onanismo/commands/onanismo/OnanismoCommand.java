@@ -4,6 +4,7 @@ import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
 import com.jagrosh.jdautilities.command.Command.Category;
 
+import es.migsanbat.onanismo.domain.Onanismo;
 import es.migsanbat.onanismo.services.CarteraService;
 import es.migsanbat.onanismo.services.OnanismoService;
 
@@ -37,7 +38,11 @@ public class OnanismoCommand extends Command {
 			case "add":
 			case "añadir":
 				try {
-					OnanismoService.get().fap(event.getAuthor().getId());
+					System.out.println(event.getAuthor().getName()+" is fapping");
+					Onanismo ona= OnanismoService.get().fap(event.getAuthor().getId());
+					if(ona==null) {
+						reply = "Saldo insuficiente";
+					}
 				} catch (Exception e) {
 					reply = e.getMessage();
 					e.printStackTrace();

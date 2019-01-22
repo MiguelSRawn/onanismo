@@ -20,9 +20,8 @@ public class OnanismoService {
 		if(cartera.getSaldoDisponible()>cost) {
 			CarteraService.get().removeBalance(cost, discordId);
 		}else {
-			
+			res = new Onanismo();
 		}
-		
 		return res;
 	}
 }
