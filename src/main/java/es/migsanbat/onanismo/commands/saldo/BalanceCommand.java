@@ -29,6 +29,7 @@ public class BalanceCommand extends Command {
 				break;
 			case "see":
 			case "ver":
+				
 				break;
 			case "ingresar":
 			case "add":
