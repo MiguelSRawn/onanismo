@@ -1,12 +1,8 @@
 package es.migsanbat.onanismo.services;
 
-import java.util.List;
-
 import es.migsanbat.onanismo.domain.Cartera;
 import es.migsanbat.onanismo.domain.User;
 import es.migsanbat.onanismo.repositories.CarteraRepository;
-import es.migsanbat.onanismo.repositories.UserRepository;
-
 public class CarteraService {
 	private static CarteraService instancia;
 	
@@ -21,12 +17,11 @@ public class CarteraService {
 		System.out.println("addBalance(): "+num.toString()+", "+discordId);
 		res = findOneByDiscordId(discordId);
 		res.setSaldoPropio(res.getSaldoPropio()+num);
-		res = save(res);
+		res = saveOrUpdate(res);
 		return res;
 	}
 
-	public Cartera save(Cartera cartera) {
-		Cartera res = null;
+	public Cartera saveOrUpdate(Cartera cartera) {
 		try {
 			System.out.println("save(Cartera): \n"
 					+ "		Usuario discordId: "+cartera.getUsuario().getDiscordId()+"\n"
@@ -34,7 +29,8 @@ public class CarteraService {
 					+ "		Cartera id: "+cartera.getId()+"\n"
 					+ "		Saldo propio: "+cartera.getSaldoPropio()+"\n"
 					+ "		Saldo dado: "+cartera.getSaldoDado()+"\n");
-			CarteraRepository.save(cartera);
+			
+			CarteraRepository.saveOrUpdate(cartera);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
