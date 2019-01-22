@@ -21,7 +21,7 @@ public class BalanceCommand extends Command {
 		String[] args = event.getArgs().split(" ");
 		String funds;
 		String reply ="";
-		if(args.length>.0) {
+		if(args.length>0) {
 			switch(args[0]) {
 			case "":
 				break;
@@ -42,7 +42,7 @@ public class BalanceCommand extends Command {
 					CarteraService.get().addBalance(Long.decode(funds), event.getAuthor().getId());
 					reply = "Se han añadido "+funds+" centimos.";
 				}else {
-					reply = "Debes escribir el número de centimos a ingresas Ex: '+saldo add <centimos>";
+					reply = "Debes escribir el número de centimos a ingresas Ex: '+saldo add <centimos>'";
 				}
 				
 				break;
