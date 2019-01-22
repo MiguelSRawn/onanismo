@@ -18,6 +18,7 @@ public class CarteraService {
 	}
 	public Cartera addBalance(Long num,String discordId) {
 		Cartera res;
+		System.out.println("addBalance(): "+num.toString()+", "+discordId);
 		res = findOneByDiscordId(discordId);
 		res.setSaldoPropio(res.getSaldoPropio()+num);
 		res = save(res);
@@ -26,6 +27,7 @@ public class CarteraService {
 
 	public Cartera save(Cartera cartera) {
 		try {
+			System.out.println("save(): "+cartera.getSaldoPropio());
 			CarteraRepository.save(cartera);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -38,6 +40,7 @@ public class CarteraService {
 		Cartera res = null;
 		User aux;
 		try {
+			System.out.println("findOneByDiscordId(): "+discordId);
 			aux = UserService.get().findOneByDiscordId(discordId);
 			res = aux.getCartera();
 			

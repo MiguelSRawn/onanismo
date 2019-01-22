@@ -24,7 +24,7 @@ public class UserService {
 		try {
 			res = UserRepository.findByDiscordId(discordId);
 			for(User us:res) {
-				System.out.println("Usuario: "+us.getName());
+				System.out.println("findByDiscordId(): Usuario: "+us.getName());
 			}
 		} catch (Exception e) {
 			
@@ -36,12 +36,12 @@ public class UserService {
 		User res = null;
 		List<User> aux;
 		try {
-			System.out.println("Searching user with discord id :"+discordId);
+			System.out.println("findOneByDiscordId(): Searching user with discord id :"+discordId);
 			aux = findByDiscordId(discordId);
 			if(!aux.isEmpty()) {
 				res =  aux.get(0);
 			}else {
-				System.out.println("The user doesn't have an account");
+				System.out.println("findOneByDiscordId(): The user doesn't have an account");
 			}
 			
 		} catch (Exception e) {
