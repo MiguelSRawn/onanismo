@@ -31,13 +31,14 @@ public class TestDBCommand extends Command {
 		try {
 			event.reply("Connecting db...");
 			createAndStoreConnection();
-			event.reply("Connected");
+			event.reply("```css \n Connected \n```");
 			List<DBTest> lista = this.list();
 			DBTest dbTest=(DBTest) lista.get(lista.size()-1);
 			
-			event.reply("Connection id: "+dbTest.getId());
-			event.reply("Connection date: "+dbTest.getDate());
-			event.reply("Everything went ok");
+			event.reply("    Connection id: "+dbTest.getId());
+			event.reply("    Connection date: "+dbTest.getDate());
+			event.reply("```css \n Everything went ok \n```");
+			
 		}catch (Exception e) {
 			event.reply("ERROR: Wops, something failed, check the logs");
 			System.err.println(e.getMessage()+", "+e);
