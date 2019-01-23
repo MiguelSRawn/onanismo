@@ -46,10 +46,10 @@ public class CarteraService {
 		res = saveOrUpdate(res);
 		return res;
 	}
-	public Integer checkSaldo(Cartera cartera) {
+	public Integer saldoRestante(Cartera cartera) {
 		Integer res = null;
 		Config config = ConfigService.get().getConfig();
-		res = cartera.getSaldoUsable()-config.getCost();
+		res = cartera.getUsuario().getOnanismos().size()*config.getCost();
 		return res;
 	}
 

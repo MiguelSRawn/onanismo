@@ -98,7 +98,7 @@ public class UserService {
 		String reply ="		Nombre: "+user.getName()+"\n"
 				+ "		ID: "+user.getDiscordId()+"\n"
 				+ "		Hucha: "+user.getCartera().getHucha()+"\n"
-				+ "		Saldo: "+CarteraService.get().checkSaldo(user.getCartera())+"\n"
+				+ "		Saldo: "+CarteraService.get().saldoRestante(user.getCartera())+"\n"
 				+ "		Onanismos: "+user.getOnanismos().size()+"\n";
 		return reply;
 	}
