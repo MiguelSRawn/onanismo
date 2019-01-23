@@ -23,6 +23,8 @@ public class BotUtil {
 	public static final int COLOR_GREEN = 0;
 	public static final int COLOR_RED = 1;
 	
+	public static final int FORMATO_BLOQUE = 2;
+	
 	public static BotUtil get() {
 		if(instancia==null) {
 			instancia = new BotUtil();
@@ -57,7 +59,7 @@ public class BotUtil {
 		return reply;
 	}
 	
-	public String ColorText(int color,String text) {
+	public String formateaTexto(int color,String text) {
 		String res;
 		switch(color) {
 		case COLOR_GREEN:
@@ -67,6 +69,8 @@ public class BotUtil {
 		case COLOR_RED:
 			res ="```diff\r\n" + 
 					"- "+text+"```";
+		case FORMATO_BLOQUE:
+			res = "```"+text+"```";
 		default:
 			res = text;
 			break;

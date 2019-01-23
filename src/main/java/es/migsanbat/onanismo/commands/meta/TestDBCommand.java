@@ -24,18 +24,19 @@ public class TestDBCommand extends Command {
 	@Override
 	protected void execute(CommandEvent event) {
 		try {
-			event.reply("```Connecting db...```");
+			String reply;
+			reply = "Connecting db...";
+			event.reply(BotUtil.get().formateaTexto(BotUtil.FORMATO_BLOQUE, reply));
 			DBTestService.get().createAndStoreConnection();
-			event.reply(BotUtil.get().ColorText(BotUtil.COLOR_GREEN, "Connected:"));
+			event.reply(BotUtil.get().formateaTexto(BotUtil.COLOR_GREEN, "Connected:"));
 			List<DBTest> lista = DBTestService.get().list();
 			DBTest dbTest=(DBTest) lista.get(lista.size()-1);
-			
-			event.reply("```	Connection id: "+dbTest.getId()+" \r\n"+
-					"	Connection date: "+dbTest.getDate()+"```");
-			event.reply(BotUtil.get().ColorText(BotUtil.COLOR_GREEN, "Everything went ok"));
+			reply = "	Connection id: "+dbTest.getId()+" \r\n	Connection date: "+dbTest.getDate();
+			event.reply(BotUtil.get().formateaTexto(BotUtil.FORMATO_BLOQUE, reply));
+			event.reply(BotUtil.get().formateaTexto(BotUtil.COLOR_GREEN, "Everything went ok"));
 			
 		}catch (Exception e) {
-			event.reply(BotUtil.get().ColorText(BotUtil.COLOR_RED, "ERROR: Wops, something failed, check the logs"));
+			event.reply(BotUtil.get().formateaTexto(BotUtil.COLOR_RED, "ERROR: Wops, something failed, check the logs"));
 			System.err.println(e.getMessage()+", "+e);
 		}
 		
