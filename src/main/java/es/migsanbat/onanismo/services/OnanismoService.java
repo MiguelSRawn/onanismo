@@ -21,11 +21,9 @@ public class OnanismoService {
 		Onanismo res =null;
 		Integer cost = ConfigService.get().getConfig().getCost();
 		Cartera cartera = CarteraService.get().findOneByDiscordId(discordId);
-		User user;
+		User user = cartera.getUsuario();
 		System.out.println("Cartera found: "+cartera.getId());
-		if(cartera.getSaldoDisponible()>cost) {
-			CarteraService.get().removeBalance(cost, discordId);
-			user = UserService.get().findOneByDiscordId(discordId);
+		if(CarteraService.get().checkSaldo(cartera)>user.getOnanismos().size()*cost) {
 			res = new Onanismo();
 			res.setFecha(new Date());
 			res.setUser(user);
@@ -50,4 +48,5 @@ public class OnanismoService {
 		}
 		return user;
 	}
+	
 }

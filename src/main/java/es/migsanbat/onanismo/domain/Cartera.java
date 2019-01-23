@@ -81,7 +81,7 @@ public class Cartera implements Serializable{
 				+ "		Saldo dado: "+this.getSaldoDado()+"\n";
 		return reply;
 	}
-	public Integer getSaldoDisponible() {
+	public Integer getSaldoUsable() {
 		return this.getSaldoPropio()+this.getSaldoRecibido();
 	}
 	public Integer getHucha() {

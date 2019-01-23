@@ -1,6 +1,7 @@
 package es.migsanbat.onanismo.services;
 
 import es.migsanbat.onanismo.domain.Cartera;
+import es.migsanbat.onanismo.domain.Config;
 import es.migsanbat.onanismo.domain.User;
 import es.migsanbat.onanismo.repositories.CarteraRepository;
 public class CarteraService {
@@ -20,6 +21,8 @@ public class CarteraService {
 		res = saveOrUpdate(res);
 		return res;
 	}
+	
+	@Deprecated
 	public Cartera removeBalance(Integer num,String discordId) throws Exception {
 		Cartera res;
 		Integer saldoPropio, saldoRecibido, subAux=0;
@@ -41,6 +44,12 @@ public class CarteraService {
 		res.setSaldoRecibido(saldoRecibido);
 		res.setSaldoPropio(saldoPropio);
 		res = saveOrUpdate(res);
+		return res;
+	}
+	public Integer checkSaldo(Cartera cartera) {
+		Integer res = null;
+		Config config = ConfigService.get().getConfig();
+		res = cartera.getSaldoUsable()-config.getCost();
 		return res;
 	}
 

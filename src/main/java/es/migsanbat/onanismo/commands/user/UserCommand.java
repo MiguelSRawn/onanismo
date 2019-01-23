@@ -59,11 +59,11 @@ public class UserCommand extends Command {
 				if(user==null) {
 					user =UserService.get().createAndSave(event.getAuthor().getId(), event.getAuthor().getName());
 					reply = "Usuario creado: \n"
-							+ user.createReply()
+							+ UserService.get().createReply(user)
 							+ "Bienvenid@ al mundo de las pajas!";
 				}else {
 					reply = "Ya tienes usuario! \n"
-							+ user.createReply()
+							+ UserService.get().createReply(user)
 							+ "Escribe +help para ver la lista de comandos";
 				}
 				

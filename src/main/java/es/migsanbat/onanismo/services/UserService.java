@@ -94,4 +94,11 @@ public class UserService {
 		}
 		return user;
 	}
+	public String createReply(User user) {
+		String reply ="		Nombre: "+user.getName()+"\n"
+				+ "		ID: "+user.getDiscordId()+"\n"
+				+ "		Saldo: "+CarteraService.get().checkSaldo(user.getCartera())+"\n"
+				+ "		Onanismos: "+user.getOnanismos().size()+"\n";
+		return reply;
+	}
 }
