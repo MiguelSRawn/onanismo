@@ -60,7 +60,7 @@ public class BotUtil {
 		String res;
 		switch(color) {
 		case COLOR_GREEN:
-			res = "```css \n "+text+" \n ```";
+			res = "```css\n"+text+"\n```";
 			break;
 		default:
 			res = text;
