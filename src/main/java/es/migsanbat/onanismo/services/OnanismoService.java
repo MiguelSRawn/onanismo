@@ -29,6 +29,7 @@ public class OnanismoService {
 			res = new Onanismo();
 			res.setFecha(new Date());
 			res.setUser(user);
+			save(res);
 		}else {
 		}
 		return res;
