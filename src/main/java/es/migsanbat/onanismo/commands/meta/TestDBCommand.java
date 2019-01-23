@@ -11,6 +11,7 @@ import com.jagrosh.jdautilities.command.CommandEvent;
 import es.migsanbat.onanismo.BotLauncher;
 import es.migsanbat.onanismo.domain.DBTest;
 import es.migsanbat.onanismo.domain.Onanismo;
+import es.migsanbat.onanismo.util.BotUtil;
 import es.migsanbat.onanismo.util.HibernateUtil;
 
 import com.jagrosh.jdautilities.command.Command.Category;
@@ -37,7 +38,7 @@ public class TestDBCommand extends Command {
 			
 			event.reply("    Connection id: "+dbTest.getId());
 			event.reply("    Connection date: "+dbTest.getDate());
-			event.reply("```css \n Everything went ok \n```");
+			event.reply(BotUtil.get().ColorText(BotUtil.COLOR_GREEN, "Everything went ok"));
 			
 		}catch (Exception e) {
 			event.reply("ERROR: Wops, something failed, check the logs");

@@ -20,6 +20,8 @@ public class BotUtil {
 	public static final int TESTDB_COMMAND = 2;
 	public static final int PING_COMMAND = 3;
 	
+	public static final int COLOR_GREEN = 0;
+	
 	public static BotUtil get() {
 		if(instancia==null) {
 			instancia = new BotUtil();
@@ -52,5 +54,18 @@ public class BotUtil {
 				break;
 		}
 		return reply;
+	}
+	
+	public String ColorText(int color,String text) {
+		String res;
+		switch(color) {
+		case COLOR_GREEN:
+			res = "```css \n "+text+" \n ```";
+			break;
+		default:
+			res = text;
+			break;
+		}
+		return res;
 	}
 }
