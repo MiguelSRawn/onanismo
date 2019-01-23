@@ -47,7 +47,7 @@ public class UserCommand extends Command {
 					reply = "Usuario inexistente.";
 				}else {
 					reply = "Usuario encontrado: \n"
-							+ user.createReply()
+							+ UserService.get().createReply(user)
 							+ "Escribe +help para ver la lista de comandos";
 				}
 				break;
