@@ -49,7 +49,7 @@ public class CarteraService {
 	public Integer saldoRestante(Cartera cartera) {
 		Integer res = null;
 		Config config = ConfigService.get().getConfig();
-		res = cartera.getUsuario().getOnanismos().size()*config.getCost();
+		res = cartera.getSaldoUsable()-cartera.getUsuario().getOnanismos().size()*config.getCost();
 		return res;
 	}
 
