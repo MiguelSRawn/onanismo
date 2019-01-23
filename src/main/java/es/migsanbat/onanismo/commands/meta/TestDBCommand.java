@@ -32,7 +32,7 @@ public class TestDBCommand extends Command {
 		try {
 			event.reply("Connecting db...");
 			createAndStoreConnection();
-			event.reply("```css \n Connected \n```");
+			event.reply("```css\n Connected \n```");
 			List<DBTest> lista = this.list();
 			DBTest dbTest=(DBTest) lista.get(lista.size()-1);
 			
