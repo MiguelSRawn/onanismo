@@ -47,7 +47,7 @@ public class UserCommand extends Command {
 					reply = "Usuario inexistente.";
 				}else {
 					reply = "Usuario encontrado: \n"
-							+ UserService.get().createReply(user)
+							+ BotUtil.get().formateaTexto(BotUtil.FORMATO_BLOQUE, UserService.get().createReply(user))
 							+ "Escribe +help para ver la lista de comandos";
 				}
 				break;
@@ -59,11 +59,11 @@ public class UserCommand extends Command {
 				if(user==null) {
 					user =UserService.get().createAndSave(event.getAuthor().getId(), event.getAuthor().getName());
 					reply = "Usuario creado: \n"
-							+ UserService.get().createReply(user)
+							+ BotUtil.get().formateaTexto(BotUtil.FORMATO_BLOQUE, UserService.get().createReply(user))
 							+ "Bienvenid@ al mundo de las pajas!";
 				}else {
 					reply = "Ya tienes usuario! \n"
-							+ UserService.get().createReply(user)
+							+ BotUtil.get().formateaTexto(BotUtil.FORMATO_BLOQUE, UserService.get().createReply(user))
 							+ "Escribe +help para ver la lista de comandos";
 				}
 				

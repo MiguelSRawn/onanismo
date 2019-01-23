@@ -57,9 +57,9 @@ public class BotUtil {
 		switch(command) {
 			case USER_COMMAND:
 				reply = "Type: \n"
-						+ "'+user help': Es este comando! \n"
-						+ "'+user ver': Mostrar la información de tu usuario o el usuario dado \n"
-						+ "'+user crear': Crea un nuevo usuario si no tienes ya uno";
+						+ formateaTexto(FORMATO_LINEA, "+user help")+": Es este comando! \n"
+						+ formateaTexto(FORMATO_LINEA, "+user ver")+": Mostrar la información de tu usuario o el usuario dado \n"
+						+ formateaTexto(FORMATO_LINEA, "+user crear")+": Crea un nuevo usuario si no tienes ya uno";
 				break;
 		}
 		return reply;
