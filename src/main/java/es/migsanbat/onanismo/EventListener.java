@@ -12,7 +12,7 @@ public class EventListener extends ListenerAdapter {
 	@Override
 	public void onReady(ReadyEvent event) {
 		System.out.println("Ready");
-		BotUtil.get().readyMessage(event, "I'm Ready");
+		BotUtil.get().readyMessage(event, BotUtil.get().formateaTexto(BotUtil.FORMATO_BLOQUE, "I'm Ready"));
 		
 		
 	}
