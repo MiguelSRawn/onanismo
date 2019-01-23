@@ -30,14 +30,14 @@ public class TestDBCommand extends Command {
 	@Override
 	protected void execute(CommandEvent event) {
 		try {
-			event.reply("Connecting db...");
+			event.reply("```Connecting db...```");
 			createAndStoreConnection();
 			event.reply(BotUtil.get().ColorText(BotUtil.COLOR_GREEN, "Connected"));
 			List<DBTest> lista = this.list();
 			DBTest dbTest=(DBTest) lista.get(lista.size()-1);
 			
-			event.reply("    Connection id: "+dbTest.getId());
-			event.reply("    Connection date: "+dbTest.getDate());
+			event.reply("```	Connection id: "+dbTest.getId()+" \r\n"+
+					"	Connection date: "+dbTest.getDate()+"```");
 			event.reply(BotUtil.get().ColorText(BotUtil.COLOR_GREEN, "Everything went ok"));
 			
 		}catch (Exception e) {
