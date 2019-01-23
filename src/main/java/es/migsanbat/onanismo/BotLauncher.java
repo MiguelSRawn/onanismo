@@ -24,6 +24,7 @@ import com.jagrosh.jdautilities.command.Command.Category;
 
 import es.migsanbat.onanismo.commands.meta.PingCommand;
 import es.migsanbat.onanismo.commands.meta.TestDBCommand;
+import es.migsanbat.onanismo.commands.onanismo.OnanismoCommand;
 import es.migsanbat.onanismo.commands.saldo.BalanceCommand;
 import es.migsanbat.onanismo.commands.user.UserCommand;
 import es.migsanbat.onanismo.domain.Config;
@@ -66,6 +67,8 @@ public class BotLauncher {
 			builder.addCommand(new BalanceCommand(currency));
 			//Comandos usuarios
 			builder.addCommand(new UserCommand(users));
+			//Comandos onanismo
+			builder.addCommand(new OnanismoCommand(fap));
 			
 			builder.setOwnerId(ownerId);
 			final CommandClient client = builder.build();
