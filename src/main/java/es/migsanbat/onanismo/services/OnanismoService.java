@@ -23,7 +23,7 @@ public class OnanismoService {
 		Cartera cartera = CarteraService.get().findOneByDiscordId(discordId);
 		User user = cartera.getUsuario();
 		System.out.println("Cartera found: "+cartera.getId());
-		if(CarteraService.get().checkSaldo(cartera)>user.getOnanismos().size()*cost) {
+		if(CarteraService.get().checkSaldo(cartera)>=user.getOnanismos().size()*cost) {
 			res = new Onanismo();
 			res.setFecha(new Date());
 			res.setUser(user);
