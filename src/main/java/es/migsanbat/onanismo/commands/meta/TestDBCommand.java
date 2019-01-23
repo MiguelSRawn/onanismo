@@ -32,7 +32,7 @@ public class TestDBCommand extends Command {
 		try {
 			event.reply("Connecting db...");
 			createAndStoreConnection();
-			event.reply("```css\n Connected \n```");
+			event.reply(BotUtil.get().ColorText(BotUtil.COLOR_GREEN, "Connected"));
 			List<DBTest> lista = this.list();
 			DBTest dbTest=(DBTest) lista.get(lista.size()-1);
 			
@@ -41,7 +41,7 @@ public class TestDBCommand extends Command {
 			event.reply(BotUtil.get().ColorText(BotUtil.COLOR_GREEN, "Everything went ok"));
 			
 		}catch (Exception e) {
-			event.reply("ERROR: Wops, something failed, check the logs");
+			event.reply(BotUtil.get().ColorText(BotUtil.COLOR_RED, "ERROR: Wops, something failed, check the logs"));
 			System.err.println(e.getMessage()+", "+e);
 		}
 		

@@ -21,6 +21,7 @@ public class BotUtil {
 	public static final int PING_COMMAND = 3;
 	
 	public static final int COLOR_GREEN = 0;
+	public static final int COLOR_RED = 1;
 	
 	public static BotUtil get() {
 		if(instancia==null) {
@@ -60,8 +61,12 @@ public class BotUtil {
 		String res;
 		switch(color) {
 		case COLOR_GREEN:
-			res = "```css\n"+text+"\n```";
+			res = "```css\r\n" +
+					text+"```";
 			break;
+		case COLOR_RED:
+			res ="```diff\r\n" + 
+					"- "+text+"```";
 		default:
 			res = text;
 			break;
