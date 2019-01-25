@@ -1,11 +1,14 @@
 package es.migsanbat.onanismo.commands.saldo;
 
+import org.hibernate.Session;
+
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
 import com.jagrosh.jdautilities.command.Command.Category;
 
 import es.migsanbat.onanismo.services.CarteraService;
 import es.migsanbat.onanismo.util.BotUtil;
+import es.migsanbat.onanismo.util.HibernateUtil;
 
 public class BalanceCommand extends Command {
 
@@ -57,6 +60,8 @@ public class BalanceCommand extends Command {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+			session.getTransaction().rollback();
 			reply = BotUtil.get().formateaTexto(BotUtil.COLOR_RED, e.getMessage());
 		}
 		event.reply(reply);

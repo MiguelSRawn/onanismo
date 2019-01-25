@@ -1,5 +1,7 @@
 package es.migsanbat.onanismo.commands.onanismo;
 
+import org.hibernate.Session;
+
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
 import com.jagrosh.jdautilities.command.Command.Category;
@@ -8,6 +10,7 @@ import es.migsanbat.onanismo.domain.Onanismo;
 import es.migsanbat.onanismo.services.CarteraService;
 import es.migsanbat.onanismo.services.OnanismoService;
 import es.migsanbat.onanismo.util.BotUtil;
+import es.migsanbat.onanismo.util.HibernateUtil;
 
 public class OnanismoCommand extends Command {
 
@@ -54,6 +57,8 @@ public class OnanismoCommand extends Command {
 			}
 		}catch (Exception e) {
 			e.printStackTrace();
+			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+			session.getTransaction().rollback();
 			reply = BotUtil.get().formateaTexto(BotUtil.COLOR_RED, e.getMessage());
 		}
 		

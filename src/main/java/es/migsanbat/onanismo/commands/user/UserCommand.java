@@ -1,11 +1,14 @@
 package es.migsanbat.onanismo.commands.user;
 
+import org.hibernate.Session;
+
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
 
 import es.migsanbat.onanismo.domain.User;
 import es.migsanbat.onanismo.services.UserService;
 import es.migsanbat.onanismo.util.BotUtil;
+import es.migsanbat.onanismo.util.HibernateUtil;
 
 import com.jagrosh.jdautilities.command.Command.Category;
 
@@ -80,6 +83,8 @@ public class UserCommand extends Command {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+			session.getTransaction().rollback();
 			reply = BotUtil.get().formateaTexto(BotUtil.COLOR_RED, e.getMessage());
 		}
 		event.reply(reply);
