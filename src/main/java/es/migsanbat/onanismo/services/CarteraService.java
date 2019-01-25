@@ -45,11 +45,11 @@ public class CarteraService {
 
 	public Cartera saveOrUpdate(Cartera cartera) throws Exception {
 		try {
-			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-	        session.beginTransaction();
+			
 			System.out.println("save(Cartera): \n"
 					+ this.createReply(cartera));
-			
+			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+	        session.beginTransaction();
 			CarteraRepository.saveOrUpdate(cartera,session);
 			session.getTransaction().commit();
 		} catch (Exception e) {
