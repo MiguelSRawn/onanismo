@@ -12,12 +12,13 @@ import es.migsanbat.onanismo.util.HibernateUtil;
 
 public class OnanismoCommand extends Command {
 
-	public OnanismoCommand(Category meta) {
+	public OnanismoCommand(Category meta,boolean mantenimiento) {
 		this.name = "fap";
 		this.category = meta;
 		this.aliases = new String[] { "paja","masturbación","onanismo" };
 		this.help = "Comandos relacionados con el acto de quererse mucho";
 		this.guildOnly=false;
+		this.ownerCommand=mantenimiento;
 	}
 
 	@Override

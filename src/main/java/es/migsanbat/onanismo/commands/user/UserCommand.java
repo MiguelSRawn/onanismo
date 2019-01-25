@@ -12,12 +12,13 @@ import es.migsanbat.onanismo.util.HibernateUtil;
 
 public class UserCommand extends Command {
 
-	public UserCommand(Category meta) {
+	public UserCommand(Category meta,boolean mantenimiento) {
 		this.name = "user";
 		this.category = meta;
 		this.aliases = new String[] { "usuario" };
 		this.help = "Comandos relacionados con el usuario";
 		this.guildOnly = false;
+		this.ownerCommand=mantenimiento;
 	}
 
 	@Override

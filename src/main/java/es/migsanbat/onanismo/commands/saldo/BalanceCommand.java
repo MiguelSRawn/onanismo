@@ -11,12 +11,13 @@ import es.migsanbat.onanismo.util.HibernateUtil;
 
 public class BalanceCommand extends Command {
 
-	public BalanceCommand(Category meta) {
+	public BalanceCommand(Category meta,boolean mantenimiento) {
 		this.name = "balance";
 		this.category = meta;
 		this.aliases = new String[] { "saldo" };
 		this.help = "Comandos relacionados con el saldo";
 		this.guildOnly = false;
+		this.ownerCommand=mantenimiento;
 	}
 
 	@Override

@@ -46,14 +46,14 @@ public class BotLauncher {
 			final Category currency = new Category("Saldo");
 			final Category users = new Category("Usuarios");
 			// Comandos Meta
-			builder.addCommands(new PingCommand(meta));
+			builder.addCommands(new PingCommand(meta,config.isMantenimiento()));
 			builder.addCommands(new TestDBCommand(meta));
 			//Comandos Saldo
-			builder.addCommand(new BalanceCommand(currency));
+			builder.addCommand(new BalanceCommand(currency,config.isMantenimiento()));
 			//Comandos usuarios
-			builder.addCommand(new UserCommand(users));
+			builder.addCommand(new UserCommand(users,config.isMantenimiento()));
 			//Comandos onanismo
-			builder.addCommand(new OnanismoCommand(fap));
+			builder.addCommand(new OnanismoCommand(fap,config.isMantenimiento()));
 			
 			builder.setOwnerId(ownerId);
 			final CommandClient client = builder.build();

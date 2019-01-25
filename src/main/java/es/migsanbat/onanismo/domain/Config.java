@@ -9,6 +9,7 @@ public class Config {
 	private String token;
 	private String ownerId;
 	private Integer cost;
+	private boolean mantenimiento;
 	
 	public Config() {
 		
@@ -40,6 +41,14 @@ public class Config {
 	public void setCost(Integer coste) {
 		this.cost = coste;
 	}
+	@XmlElement(name = "mantenimiento")
+	public boolean isMantenimiento() {
+		return mantenimiento;
+	}
+	public void setMantenimiento(boolean mantenimiento) {
+		this.mantenimiento = mantenimiento;
+	}
+	
 	
 	
 	
