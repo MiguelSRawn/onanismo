@@ -17,12 +17,18 @@ public class CarteraService {
 		}
 		return instancia;
 	}
-	public Cartera addBalance(Integer num,String discordId) {
+	public Cartera addBalance(Integer num,String discordId) throws Exception {
 		Cartera res;
-		System.out.println("addBalance(): "+num.toString()+", "+discordId);
-		res = findOneByDiscordId(discordId);
-		res.setSaldoPropio(res.getSaldoPropio()+num);
-		res = saveOrUpdate(res);
+		try {
+			
+			System.out.println("addBalance(): "+num.toString()+", "+discordId);
+			res = findOneByDiscordId(discordId);
+			res.setSaldoPropio(res.getSaldoPropio()+num);
+			res = saveOrUpdate(res);
+		}catch (Exception e) {
+			throw new Exception(e);
+		}
+		
 		return res;
 	}
 	
@@ -33,17 +39,18 @@ public class CarteraService {
 		return res;
 	}
 
-	public Cartera saveOrUpdate(Cartera cartera) {
+	public Cartera saveOrUpdate(Cartera cartera) throws Exception {
 		try {
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 	        session.beginTransaction();
 			System.out.println("save(Cartera): \n"
-					+ cartera.createReply());
+					+ this.createReply(cartera));
 			
 			CarteraRepository.saveOrUpdate(cartera,session);
 			session.getTransaction().commit();
 		} catch (Exception e) {
 			e.printStackTrace();
+			throw new Exception("ERROR: Wops, something failed, check the logs");
 		}
 		return cartera;
 	}
@@ -61,5 +68,15 @@ public class CarteraService {
 			e.printStackTrace();
 		}
 		return res;
+	}
+	public String createReply(Cartera cartera) {
+		String reply ="		Usuario discordId: "+cartera.getUsuario().getDiscordId()+"\n"
+				+ "		Usuario id: "+cartera.getUsuario().getId()+"\n"
+				+ "		Cartera id: "+cartera.getId()+"\n"
+				+ "		Hucha: "+cartera.getHucha()+"\n"
+				+ "		Saldo restante: "+this.saldoRestante(cartera)+"\n"
+				+ "		Saldo dado: "+cartera.getSaldoDado()+"\n"
+				+ "		Saldo recibido: "+cartera.getSaldoRecibido()+"\n";
+		return reply;
 	}
 }

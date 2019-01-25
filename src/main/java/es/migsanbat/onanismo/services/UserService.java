@@ -10,6 +10,7 @@ import es.migsanbat.onanismo.domain.Onanismo;
 import es.migsanbat.onanismo.domain.Transaccion;
 import es.migsanbat.onanismo.domain.User;
 import es.migsanbat.onanismo.repositories.UserRepository;
+import es.migsanbat.onanismo.util.BotUtil;
 import es.migsanbat.onanismo.util.HibernateUtil;
 
 public class UserService {
@@ -104,12 +105,18 @@ public class UserService {
 		}
 		return user;
 	}
-	public String createReply(User user) {
-		String reply ="		Nombre: "+user.getName()+"\n"
-				+ "		ID: "+user.getDiscordId()+"\n"
-				+ "		Hucha: "+user.getCartera().getHucha()+"\n"
-				+ "		Saldo: "+CarteraService.get().saldoRestante(user.getCartera())+"\n"
-				+ "		Onanismos: "+user.getOnanismos().size()+"\n";
+	public String createReply(User user) throws Exception {
+		String reply="";
+		try {
+			reply ="		Nombre: "+user.getName()+"\n"
+					+ "		ID: "+user.getDiscordId()+"\n"
+					+ "		Hucha: "+user.getCartera().getHucha()+"\n"
+					+ "		Saldo: "+CarteraService.get().saldoRestante(user.getCartera())+"\n"
+					+ "		Onanismos: "+user.getOnanismos().size()+"\n";
+		}catch(Exception ignore) {
+			throw new Exception("ERROR: Wops, something failed, check the logs");
+		}
+		
 		return reply;
 	}
 }

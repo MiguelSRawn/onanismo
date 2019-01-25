@@ -5,6 +5,7 @@ import com.jagrosh.jdautilities.command.CommandEvent;
 import com.jagrosh.jdautilities.command.Command.Category;
 
 import es.migsanbat.onanismo.services.CarteraService;
+import es.migsanbat.onanismo.util.BotUtil;
 
 public class BalanceCommand extends Command {
 
@@ -36,14 +37,19 @@ public class BalanceCommand extends Command {
 			case "ingresar":
 			case "add":
 			case "añadir":
-				if(args.length>1) {
-					funds = args[1];
-					System.out.println("Adding funds: "+funds);
-					CarteraService.get().addBalance(Integer.decode(funds), event.getAuthor().getId());
-					reply = "Se han añadido "+funds+" centimos.";
-				}else {
-					reply = "Debes escribir el número de centimos a ingresas Ex: '+saldo add <centimos>'";
+				try {
+					if(args.length>1) {
+						funds = args[1];
+						System.out.println("Adding funds: "+funds);
+						CarteraService.get().addBalance(Integer.decode(funds), event.getAuthor().getId());
+						reply = "Se han añadido "+funds+" centimos.";
+					}else {
+						reply = "Debes escribir el número de centimos a ingresas Ex: '+saldo add <centimos>'";
+					}
+				}catch (Exception e) {
+					reply = BotUtil.get().formateaTexto(BotUtil.COLOR_RED, e.getMessage());
 				}
+				
 				break;
 			default:
 				reply = "Wops, comando no reconocido. Argumento: "+args[0];
