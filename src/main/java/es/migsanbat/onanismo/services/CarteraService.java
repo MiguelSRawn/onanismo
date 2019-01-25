@@ -33,12 +33,9 @@ public class CarteraService {
 	}
 	
 	public Integer saldoRestante(Cartera cartera) {
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        session.beginTransaction();
 		Integer res = null;
 		Config config = ConfigService.get().getConfig();
 		res = cartera.getSaldoUsable()-cartera.getUsuario().getOnanismos().size()*config.getCost();
-		session.getTransaction().commit();
 		return res;
 	}
 
@@ -73,6 +70,8 @@ public class CarteraService {
 		return res;
 	}
 	public String createReply(Cartera cartera) {
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
 		String reply ="		Usuario discordId: "+cartera.getUsuario().getDiscordId()+"\n"
 				+ "		Usuario id: "+cartera.getUsuario().getId()+"\n"
 				+ "		Cartera id: "+cartera.getId()+"\n"
@@ -80,6 +79,7 @@ public class CarteraService {
 				+ "		Saldo restante: "+this.saldoRestante(cartera)+"\n"
 				+ "		Saldo dado: "+cartera.getSaldoDado()+"\n"
 				+ "		Saldo recibido: "+cartera.getSaldoRecibido()+"\n";
+		session.getTransaction().commit();
 		return reply;
 	}
 }
