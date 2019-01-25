@@ -35,7 +35,7 @@ public class BotLauncher {
 					+ "Token: "+token+" \n"
 					+ "OwnerId: "+ownerId+" \n"
 					+ "Coste: "+coste.toString()+" \n"
-					+ "Mantenimiento: "+String.valueOf(mantenimiento));
+					+ "Mantenimiento: "+ String.valueOf(mantenimiento));
 			/*
 			 * Inicio del bot
 			 */
