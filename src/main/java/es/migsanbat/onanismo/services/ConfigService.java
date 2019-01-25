@@ -44,9 +44,9 @@ public class ConfigService {
 			config.setToken(System.getenv("TOKEN"));
 			config.setOwnerId(System.getenv("OWNER_ID"));
 		}
-//		if(System.getenv("MANTENIMIENTO")!=null) {
-//			config.setMantenimiento(Boolean.parseBoolean(System.getenv("MANTENIMIENTO")));
-//		}
+		if(System.getenv("MANTENIMIENTO")!=null) {
+			config.setMantenimiento(Boolean.parseBoolean(System.getenv("MANTENIMIENTO")));
+		}
 		return this;
 	}
 	

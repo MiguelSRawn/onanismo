@@ -29,11 +29,13 @@ public class BotLauncher {
 			String token = config.getToken();
 			String ownerId = config.getOwnerId();
 			Integer coste = config.getCost();
+			boolean mantenimiento = config.isMantenimiento();
 			
 			System.out.println("Loading with config: \n"
 					+ "Token: "+token+" \n"
 					+ "OwnerId: "+ownerId+" \n"
-					+ "Coste: "+coste.toString());
+					+ "Coste: "+coste.toString()
+					+ "Mantenimiento: "+String.valueOf(mantenimiento));
 			/*
 			 * Inicio del bot
 			 */
@@ -46,14 +48,14 @@ public class BotLauncher {
 			final Category currency = new Category("Saldo");
 			final Category users = new Category("Usuarios");
 			// Comandos Meta
-			builder.addCommands(new PingCommand(meta,config.isMantenimiento()));
+			builder.addCommands(new PingCommand(meta,mantenimiento));
 			builder.addCommands(new TestDBCommand(meta));
 			//Comandos Saldo
-			builder.addCommand(new BalanceCommand(currency,config.isMantenimiento()));
+			builder.addCommand(new BalanceCommand(currency,mantenimiento));
 			//Comandos usuarios
-			builder.addCommand(new UserCommand(users,config.isMantenimiento()));
+			builder.addCommand(new UserCommand(users,mantenimiento));
 			//Comandos onanismo
-			builder.addCommand(new OnanismoCommand(fap,config.isMantenimiento()));
+			builder.addCommand(new OnanismoCommand(fap,mantenimiento));
 			
 			builder.setOwnerId(ownerId);
 			final CommandClient client = builder.build();
