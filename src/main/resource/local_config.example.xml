@@ -2,4 +2,6 @@
 <config>
 	<token>token</token>
 	<ownerId>ownerId</ownerId>
+	<cost>cost</cost>
+	<mantenimiento>false</mantenimiento>
 </config>
