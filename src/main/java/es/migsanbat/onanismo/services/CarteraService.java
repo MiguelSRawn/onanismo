@@ -4,6 +4,7 @@ import org.hibernate.Session;
 
 import es.migsanbat.onanismo.domain.Cartera;
 import es.migsanbat.onanismo.domain.Config;
+import es.migsanbat.onanismo.domain.Transaccion;
 import es.migsanbat.onanismo.domain.User;
 import es.migsanbat.onanismo.repositories.CarteraRepository;
 import es.migsanbat.onanismo.util.HibernateUtil;
@@ -35,7 +36,7 @@ public class CarteraService {
 	public Integer saldoRestante(Cartera cartera) {
 		Integer res = null;
 		Config config = ConfigService.get().getConfig();
-		res = cartera.getSaldoUsable()-cartera.getUsuario().getOnanismos().size()*config.getCost();
+		res = CarteraService.get().getSaldoUsable(cartera)-cartera.getUsuario().getOnanismos().size()*config.getCost();
 		return res;
 	}
 
@@ -69,16 +70,36 @@ public class CarteraService {
 		}
 		return res;
 	}
+	public Integer getSaldoUsable(Cartera cartera) {
+		return cartera.getSaldoPropio()+this.getSaldoRecibido(cartera);
+	}
+	public Integer getHucha(Cartera cartera) {
+		return cartera.getSaldoPropio()+this.getSaldoDado(cartera);
+	}
+	public Integer getSaldoDado(Cartera cartera) {
+		Integer res = 0;
+		for(Transaccion trans:cartera.getSaliente()) {
+			res+=trans.getBalanza();
+		}
+		return res;
+	}
+	public Integer getSaldoRecibido(Cartera cartera) {
+		Integer res = 0;
+		for(Transaccion trans:cartera.getEntrante()) {
+			res+=trans.getBalanza();
+		}
+		return res;
+	}
 	public String createReply(Cartera cartera) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
 		String reply ="		Usuario discordId: "+cartera.getUsuario().getDiscordId()+"\n"
 				+ "		Usuario id: "+cartera.getUsuario().getId()+"\n"
 				+ "		Cartera id: "+cartera.getId()+"\n"
-				+ "		Hucha: "+cartera.getHucha()+"\n"
+				+ "		Hucha: "+CarteraService.get().getHucha(cartera)+"\n"
 				+ "		Saldo restante: "+this.saldoRestante(cartera)+"\n"
-				+ "		Saldo dado: "+cartera.getSaldoDado()+"\n"
-				+ "		Saldo recibido: "+cartera.getSaldoRecibido()+"\n";
+				+ "		Saldo dado: "+CarteraService.get().getSaldoDado(cartera)+"\n"
+				+ "		Saldo recibido: "+CarteraService.get().getSaldoRecibido(cartera)+"\n";
 		session.getTransaction().commit();
 		return reply;
 	}

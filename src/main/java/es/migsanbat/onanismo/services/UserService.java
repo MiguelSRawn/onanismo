@@ -110,7 +110,7 @@ public class UserService {
 		try {
 			reply ="		Nombre: "+user.getName()+"\n"
 					+ "		ID: "+user.getDiscordId()+"\n"
-					+ "		Hucha: "+user.getCartera().getHucha()+"\n"
+					+ "		Hucha: "+CarteraService.get().getHucha(user.getCartera())+"\n"
 					+ "		Saldo: "+CarteraService.get().saldoRestante(user.getCartera())+"\n"
 					+ "		Onanismos: "+user.getOnanismos().size()+"\n";
 		}catch(Exception e) {

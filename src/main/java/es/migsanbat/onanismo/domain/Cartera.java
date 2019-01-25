@@ -58,20 +58,7 @@ public class Cartera implements Serializable{
 	public void setSaldoPropio(Integer saldoPropio) {
 		this.saldoPropio = saldoPropio;
 	}
-	public Integer getSaldoDado() {
-		Integer res = 0;
-		for(Transaccion trans:saliente) {
-			res+=trans.getBalanza();
-		}
-		return res;
-	}
-	public Integer getSaldoRecibido() {
-		Integer res = 0;
-		for(Transaccion trans:entrante) {
-			res+=trans.getBalanza();
-		}
-		return res;
-	}
+	
 	public User getUsuario() {
 		return usuario;
 	}
@@ -82,12 +69,7 @@ public class Cartera implements Serializable{
 		return serialVersionUID;
 	}
 	
-	public Integer getSaldoUsable() {
-		return this.getSaldoPropio()+this.getSaldoRecibido();
-	}
-	public Integer getHucha() {
-		return this.getSaldoPropio()+this.getSaldoDado();
-	}
+	
 	public List<Transaccion> getEntrante() {
 		return entrante;
 	}
