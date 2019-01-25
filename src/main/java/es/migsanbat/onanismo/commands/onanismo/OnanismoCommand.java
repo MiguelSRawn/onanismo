@@ -4,10 +4,8 @@ import org.hibernate.Session;
 
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
-import com.jagrosh.jdautilities.command.Command.Category;
 
 import es.migsanbat.onanismo.domain.Onanismo;
-import es.migsanbat.onanismo.services.CarteraService;
 import es.migsanbat.onanismo.services.OnanismoService;
 import es.migsanbat.onanismo.util.BotUtil;
 import es.migsanbat.onanismo.util.HibernateUtil;
@@ -25,7 +23,6 @@ public class OnanismoCommand extends Command {
 	@Override
 	protected void execute(CommandEvent event) {
 		String[] args = event.getArgs().split(" ");
-		String funds;
 		String reply ="";
 		try {
 			if(args.length>0) {

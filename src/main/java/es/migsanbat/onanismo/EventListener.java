@@ -1,6 +1,5 @@
 package es.migsanbat.onanismo;
 import es.migsanbat.onanismo.util.BotUtil;
-import net.dv8tion.jda.core.entities.User;
 import net.dv8tion.jda.core.events.ReadyEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 

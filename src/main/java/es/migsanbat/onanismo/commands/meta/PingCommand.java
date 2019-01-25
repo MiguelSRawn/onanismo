@@ -2,7 +2,6 @@ package es.migsanbat.onanismo.commands.meta;
 
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
-import com.jagrosh.jdautilities.command.Command.Category;
 
 public class PingCommand extends Command {
 

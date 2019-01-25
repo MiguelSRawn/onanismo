@@ -1,13 +1,11 @@
 package es.migsanbat.onanismo.repositories;
 
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
-import es.migsanbat.onanismo.domain.DBTest;
 import es.migsanbat.onanismo.domain.User;
 import es.migsanbat.onanismo.util.BotUtil;
 import es.migsanbat.onanismo.util.HibernateUtil;

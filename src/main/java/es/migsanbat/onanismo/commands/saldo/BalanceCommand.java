@@ -4,7 +4,6 @@ import org.hibernate.Session;
 
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
-import com.jagrosh.jdautilities.command.Command.Category;
 
 import es.migsanbat.onanismo.services.CarteraService;
 import es.migsanbat.onanismo.util.BotUtil;

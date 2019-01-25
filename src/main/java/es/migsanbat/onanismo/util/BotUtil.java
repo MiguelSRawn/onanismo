@@ -4,10 +4,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import javax.swing.plaf.ButtonUI;
-
-import org.omg.PortableInterceptor.USER_EXCEPTION;
-
 import es.migsanbat.onanismo.services.ConfigService;
 import net.dv8tion.jda.core.events.ReadyEvent;
 

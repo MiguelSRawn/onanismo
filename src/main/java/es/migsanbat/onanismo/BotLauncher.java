@@ -1,26 +1,13 @@
 package es.migsanbat.onanismo;
 
-import java.io.File;
 import java.net.URISyntaxException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Date;
-import java.util.List;
-import java.util.UUID;
 
 import javax.security.auth.login.LoginException;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Unmarshaller;
 
-import org.hibernate.Session;
-
+import com.jagrosh.jdautilities.command.Command.Category;
 import com.jagrosh.jdautilities.command.CommandClient;
 import com.jagrosh.jdautilities.command.CommandClientBuilder;
-import com.jagrosh.jdautilities.command.Command.Category;
 
 import es.migsanbat.onanismo.commands.meta.PingCommand;
 import es.migsanbat.onanismo.commands.meta.TestDBCommand;
@@ -28,9 +15,7 @@ import es.migsanbat.onanismo.commands.onanismo.OnanismoCommand;
 import es.migsanbat.onanismo.commands.saldo.BalanceCommand;
 import es.migsanbat.onanismo.commands.user.UserCommand;
 import es.migsanbat.onanismo.domain.Config;
-import es.migsanbat.onanismo.domain.Onanismo;
 import es.migsanbat.onanismo.services.ConfigService;
-import es.migsanbat.onanismo.util.HibernateUtil;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.JDABuilder;
 

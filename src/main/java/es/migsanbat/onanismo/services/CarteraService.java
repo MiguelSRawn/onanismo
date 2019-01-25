@@ -2,8 +2,6 @@ package es.migsanbat.onanismo.services;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import org.hibernate.Session;
 
 import es.migsanbat.onanismo.domain.Cartera;

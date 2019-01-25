@@ -10,8 +10,6 @@ import es.migsanbat.onanismo.services.UserService;
 import es.migsanbat.onanismo.util.BotUtil;
 import es.migsanbat.onanismo.util.HibernateUtil;
 
-import com.jagrosh.jdautilities.command.Command.Category;
-
 public class UserCommand extends Command {
 
 	public UserCommand(Category meta) {

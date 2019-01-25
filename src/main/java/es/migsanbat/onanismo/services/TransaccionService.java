@@ -2,15 +2,10 @@ package es.migsanbat.onanismo.services;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import org.hibernate.Session;
 
 import es.migsanbat.onanismo.domain.Cartera;
-import es.migsanbat.onanismo.domain.Config;
 import es.migsanbat.onanismo.domain.Transaccion;
-import es.migsanbat.onanismo.domain.User;
-import es.migsanbat.onanismo.repositories.CarteraRepository;
 import es.migsanbat.onanismo.repositories.TransaccionRepository;
 import es.migsanbat.onanismo.util.HibernateUtil;
 

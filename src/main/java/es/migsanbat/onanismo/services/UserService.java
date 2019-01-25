@@ -7,10 +7,8 @@ import org.hibernate.Session;
 
 import es.migsanbat.onanismo.domain.Cartera;
 import es.migsanbat.onanismo.domain.Onanismo;
-import es.migsanbat.onanismo.domain.Transaccion;
 import es.migsanbat.onanismo.domain.User;
 import es.migsanbat.onanismo.repositories.UserRepository;
-import es.migsanbat.onanismo.util.BotUtil;
 import es.migsanbat.onanismo.util.HibernateUtil;
 
 public class UserService {

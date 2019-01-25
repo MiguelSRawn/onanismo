@@ -1,6 +1,5 @@
 package es.migsanbat.onanismo.services;
 
-import java.util.Arrays;
 import java.util.Date;
 
 import org.hibernate.Session;
@@ -9,7 +8,6 @@ import es.migsanbat.onanismo.domain.Cartera;
 import es.migsanbat.onanismo.domain.Onanismo;
 import es.migsanbat.onanismo.domain.User;
 import es.migsanbat.onanismo.repositories.OnanismoRepository;
-import es.migsanbat.onanismo.repositories.UserRepository;
 import es.migsanbat.onanismo.util.HibernateUtil;
 
 public class OnanismoService {
@@ -36,7 +34,7 @@ public class OnanismoService {
 		}
 		return res;
 	}
-	public Onanismo save(Onanismo onanismo) {
+	public Onanismo save(Onanismo onanismo) throws Exception {
 		try {
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 	        session.beginTransaction();
@@ -44,10 +42,13 @@ public class OnanismoService {
 			session.getTransaction().commit();
 		} catch (Exception e) {
 			e.printStackTrace();
+			throw new Exception(e);
+		}finally {
+			
 		}
 		return onanismo;
 	}
-	public Onanismo persist(Onanismo user) {
+	public Onanismo persist(Onanismo user) throws Exception {
 		try {
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 	        session.beginTransaction();
@@ -55,6 +56,7 @@ public class OnanismoService {
 			session.getTransaction().commit();
 		}catch (Exception e) {
 			e.printStackTrace();
+			throw new Exception(e);
 		}
 		return user;
 	}
