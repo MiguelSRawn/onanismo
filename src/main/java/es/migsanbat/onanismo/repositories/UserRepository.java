@@ -14,14 +14,9 @@ import es.migsanbat.onanismo.util.HibernateUtil;
 
 public class UserRepository {
 	
-	public static void save(User user) throws Exception {
+	public static void save(User user,Session session) throws Exception {
 		try {
-			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-	        session.beginTransaction();
-	        
-	        session.save(user);
-	 
-	        session.getTransaction().commit();
+			session.save(user);
 		}catch (Exception e) {
 			HibernateUtil.getSessionFactory().getCurrentSession().getTransaction().rollback();
 			throw new Exception(e.getMessage(),e);
@@ -30,14 +25,9 @@ public class UserRepository {
 		}
 	}
 
-	public static void persist(User user) throws Exception {
+	public static void persist(User user,Session session) throws Exception {
 		try {
-			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-	        session.beginTransaction();
-	        
-	        session.persist(user);
-	 
-	        session.getTransaction().commit();
+			session.persist(user);
 		}catch (Exception e) {
 			HibernateUtil.getSessionFactory().getCurrentSession().getTransaction().rollback();
 			throw new Exception(e.getMessage(),e);
@@ -46,21 +36,16 @@ public class UserRepository {
 		}
 	}
 	
-	public static List<User> findByDiscordId(String discordId) throws Exception {
+	public static List<User> findByDiscordId(String discordId,Session session) throws Exception {
 		List<User> res = null;
 		List<?> aux = null;
 		try {
-			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-	        session.beginTransaction();
-	        
-	        String hql = "from User u where u.discordId = :discordId";
+			String hql = "from User u where u.discordId = :discordId";
 	        Query<?> query = session.createQuery(hql);
 	        query.setParameter("discordId", discordId);
 	        System.out.println("Executing query '"+query.toString()+"'");
 	        aux = query.list();
 	        res = BotUtil.get().castList(User.class, aux);
-	 
-	        session.getTransaction().commit();
 		}catch (Exception e) {
 			HibernateUtil.getSessionFactory().getCurrentSession().getTransaction().rollback();
 			System.out.println("WARNING: Rolled back");

@@ -3,11 +3,14 @@ package es.migsanbat.onanismo.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Session;
+
 import es.migsanbat.onanismo.domain.Cartera;
 import es.migsanbat.onanismo.domain.Onanismo;
 import es.migsanbat.onanismo.domain.Transaccion;
 import es.migsanbat.onanismo.domain.User;
 import es.migsanbat.onanismo.repositories.UserRepository;
+import es.migsanbat.onanismo.util.HibernateUtil;
 
 public class UserService {
 	private static UserService instancia;
@@ -22,7 +25,10 @@ public class UserService {
 		List<User> res = null;
 		
 		try {
-			res = UserRepository.findByDiscordId(discordId);
+			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+	        session.beginTransaction();
+			res = UserRepository.findByDiscordId(discordId,session);
+			session.getTransaction().commit();
 			for(User us:res) {
 				System.out.println("findByDiscordId(): Usuario: "+us.getName());
 			}
@@ -78,7 +84,10 @@ public class UserService {
 	}
 	public User save(User user) {
 		try {
-			UserRepository.save(user);
+			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+	        session.beginTransaction();
+			UserRepository.save(user,session);
+			session.getTransaction().commit();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -86,7 +95,10 @@ public class UserService {
 	}
 	public User persist(User user) {
 		try {
-			UserRepository.persist(user);
+			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+	        session.beginTransaction();
+			UserRepository.persist(user,session);
+			session.getTransaction().commit();
 		}catch (Exception e) {
 			e.printStackTrace();
 		}

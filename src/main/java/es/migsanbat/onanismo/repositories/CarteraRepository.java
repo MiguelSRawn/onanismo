@@ -4,18 +4,12 @@ package es.migsanbat.onanismo.repositories;
 import org.hibernate.Session;
 
 import es.migsanbat.onanismo.domain.Cartera;
-import es.migsanbat.onanismo.util.HibernateUtil;
 
 public class CarteraRepository {
 	
-	public static void save(Cartera cartera) throws Exception {
+	public static void save(Cartera cartera,Session session) throws Exception {
 		try {
-			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-	        session.beginTransaction();
-	        
-	        session.save(cartera);
-	 
-	        session.getTransaction().commit();
+			session.save(cartera);
 		}catch (Exception e) {
 			throw new Exception(e.getMessage(),e);
 		}finally {
@@ -23,14 +17,9 @@ public class CarteraRepository {
 		}
 	}
 
-	public static void update(Cartera cartera) throws Exception {
+	public static void update(Cartera cartera,Session session) throws Exception {
 		try {
-			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-	        session.beginTransaction();
-	        
-	        session.update(cartera);
-	 
-	        session.getTransaction().commit();
+			session.update(cartera);
 		}catch (Exception e) {
 			throw new Exception(e.getMessage(),e);
 		}finally {
@@ -38,14 +27,9 @@ public class CarteraRepository {
 		}
 		
 	}
-	public static void saveOrUpdate(Cartera cartera) throws Exception {
+	public static void saveOrUpdate(Cartera cartera,Session session) throws Exception {
 		try {
-			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-	        session.beginTransaction();
-	        
-	        session.saveOrUpdate(cartera);
-	 
-	        session.getTransaction().commit();
+			session.saveOrUpdate(cartera);
 		}catch (Exception e) {
 			throw new Exception(e.getMessage(),e);
 		}finally {

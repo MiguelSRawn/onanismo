@@ -15,14 +15,9 @@ import es.migsanbat.onanismo.util.HibernateUtil;
 
 public class OnanismoRepository {
 	
-	public static void save(Onanismo user) throws Exception {
+	public static void save(Onanismo user,Session session) throws Exception {
 		try {
-			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-	        session.beginTransaction();
-	        
-	        session.save(user);
-	 
-	        session.getTransaction().commit();
+			session.save(user);
 		}catch (Exception e) {
 			HibernateUtil.getSessionFactory().getCurrentSession().getTransaction().rollback();
 			throw new Exception(e.getMessage(),e);
@@ -31,14 +26,9 @@ public class OnanismoRepository {
 		}
 	}
 
-	public static void persist(Onanismo user) throws Exception {
+	public static void persist(Onanismo user,Session session) throws Exception {
 		try {
-			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-	        session.beginTransaction();
-	        
-	        session.persist(user);
-	 
-	        session.getTransaction().commit();
+			session.persist(user);
 		}catch (Exception e) {
 			HibernateUtil.getSessionFactory().getCurrentSession().getTransaction().rollback();
 			throw new Exception(e.getMessage(),e);
@@ -47,21 +37,16 @@ public class OnanismoRepository {
 		}
 	}
 	
-	public static List<Onanismo> findByDiscordId(String discordId) throws Exception {
+	public static List<Onanismo> findByDiscordId(String discordId,Session session) throws Exception {
 		List<Onanismo> res = null;
 		List<?> aux = null;
 		try {
-			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-	        session.beginTransaction();
-	        
-	        String hql = "from Onanismo o where o.user.discordId = :discordId";
+			String hql = "from Onanismo o where o.user.discordId = :discordId";
 	        Query<?> query = session.createQuery(hql);
 	        query.setParameter("discordId", discordId);
 	        System.out.println("Executing query '"+query.toString()+"'");
 	        aux = query.list();
 	        res = BotUtil.get().castList(Onanismo.class, aux);
-	 
-	        session.getTransaction().commit();
 		}catch (Exception e) {
 			HibernateUtil.getSessionFactory().getCurrentSession().getTransaction().rollback();
 			System.out.println("WARNING: Rolled back");

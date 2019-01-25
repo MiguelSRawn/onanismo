@@ -1,9 +1,13 @@
 package es.migsanbat.onanismo.services;
 
+import org.hibernate.Session;
+
 import es.migsanbat.onanismo.domain.Cartera;
 import es.migsanbat.onanismo.domain.Config;
 import es.migsanbat.onanismo.domain.User;
 import es.migsanbat.onanismo.repositories.CarteraRepository;
+import es.migsanbat.onanismo.util.HibernateUtil;
+
 public class CarteraService {
 	private static CarteraService instancia;
 	
@@ -31,10 +35,13 @@ public class CarteraService {
 
 	public Cartera saveOrUpdate(Cartera cartera) {
 		try {
+			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+	        session.beginTransaction();
 			System.out.println("save(Cartera): \n"
 					+ cartera.createReply());
 			
-			CarteraRepository.saveOrUpdate(cartera);
+			CarteraRepository.saveOrUpdate(cartera,session);
+			session.getTransaction().commit();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
