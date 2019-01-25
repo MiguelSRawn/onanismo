@@ -16,74 +16,70 @@ public class UserCommand extends Command {
 		this.category = meta;
 		this.aliases = new String[] { "usuario" };
 		this.help = "Comandos relacionados con el usuario";
-		this.guildOnly=false;
+		this.guildOnly = false;
 	}
 
 	@Override
 	protected void execute(CommandEvent event) {
 		String[] args = event.getArgs().split(" ");
 		User user;
-		String reply ="";
-		if(args.length>0) {
-			switch(args[0]) {
-			case "":
-				reply = "Escribe '+user help' para ver la lista de comandos de user";
-				break;
-			case "help":
-				reply = BotUtil.get().commandHelp(BotUtil.USER_COMMAND, args);
-				break;
-			case "see":
-			case "ver":
-			case "show":
-			case "mostrar":
-				try {
+		String reply = "";
+		try {
+			if (args.length > 0) {
+				switch (args[0]) {
+				case "":
+					reply = "Escribe '+user help' para ver la lista de comandos de user";
+					break;
+				case "help":
+					reply = BotUtil.get().commandHelp(BotUtil.USER_COMMAND, args);
+					break;
+				case "see":
+				case "ver":
+				case "show":
+				case "mostrar":
 					String discordId;
-					if(args.length>1) {
+					if (args.length > 1) {
 						discordId = args[1];
-					}else {
+					} else {
 						discordId = event.getAuthor().getId();
 					}
 					user = UserService.get().findOneByDiscordId(discordId);
-					if(user==null) {
+					if (user == null) {
 						reply = "Usuario inexistente.";
-					}else {
+					} else {
 						reply = "Usuario encontrado: \n"
-								+ BotUtil.get().formateaTexto(BotUtil.FORMATO_BLOQUE, UserService.get().createReply(user))
+								+ BotUtil.get().formateaTexto(BotUtil.FORMATO_BLOQUE,
+										UserService.get().createReply(user))
 								+ "Escribe +help para ver la lista de comandos";
 					}
-				}catch (Exception e) {
-					reply = BotUtil.get().formateaTexto(BotUtil.FORMATO_BLOQUE, e.getMessage());
-				}
-				
-				break;
-			case "ingresar":
-			case "añadir":
-			case "crear":
-			case "create":
-				try {
+
+					break;
+				case "ingresar":
+				case "añadir":
+				case "crear":
+				case "create":
 					user = UserService.get().findOneByDiscordId(event.getAuthor().getId());
-					if(user==null) {
-						user =UserService.get().createAndSave(event.getAuthor().getId(), event.getAuthor().getName());
-						reply = "Usuario creado: \n"
-								+ BotUtil.get().formateaTexto(BotUtil.FORMATO_BLOQUE, UserService.get().createReply(user))
-								+ "Bienvenid@ al mundo de las pajas!";
-					}else {
+					if (user == null) {
+						user = UserService.get().createAndSave(event.getAuthor().getId(), event.getAuthor().getName());
+						reply = "Usuario creado: \n" + BotUtil.get().formateaTexto(BotUtil.FORMATO_BLOQUE,
+								UserService.get().createReply(user)) + "Bienvenid@ al mundo de las pajas!";
+					} else {
 						reply = "Ya tienes usuario! \n"
-								+ BotUtil.get().formateaTexto(BotUtil.FORMATO_BLOQUE, UserService.get().createReply(user))
+								+ BotUtil.get().formateaTexto(BotUtil.FORMATO_BLOQUE,
+										UserService.get().createReply(user))
 								+ "Escribe +help para ver la lista de comandos";
 					}
-					
-				}catch (Exception e) {
-					reply = BotUtil.get().formateaTexto(BotUtil.COLOR_RED, e.getMessage());
+
+					break;
+				default:
+					reply = "Wops, comando no reconocido. Argumento: " + args[0];
 				}
-				
-				break;
-			default:
-				reply = "Wops, comando no reconocido. Argumento: "+args[0];
+
+			} else {
+				reply = "Escribe '+user help' para ver la lista de comandos de user";
 			}
-					
-		}else {
-			reply = "Escribe '+user help' para ver la lista de comandos de user";
+		} catch (Exception e) {
+			reply = BotUtil.get().formateaTexto(BotUtil.COLOR_RED, e.getMessage());
 		}
 		event.reply(reply);
 	}

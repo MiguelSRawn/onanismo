@@ -14,49 +14,49 @@ public class BalanceCommand extends Command {
 		this.category = meta;
 		this.aliases = new String[] { "saldo" };
 		this.help = "Comandos relacionados con el saldo";
-		this.guildOnly=false;
+		this.guildOnly = false;
 	}
 
 	@Override
 	protected void execute(CommandEvent event) {
 		String[] args = event.getArgs().split(" ");
 		String funds;
-		String reply ="";
-		if(args.length>0) {
-			switch(args[0]) {
-			case "":
-				break;
-			case "help":
-				break;
-			case "see":
-			case "ver":
-			case "show":
-			case "mostrar":
-				
-				break;
-			case "ingresar":
-			case "add":
-			case "añadir":
-				try {
-					if(args.length>1) {
+		String reply = "";
+		try {
+			if (args.length > 0) {
+				switch (args[0]) {
+				case "":
+					break;
+				case "help":
+					break;
+				case "see":
+				case "ver":
+				case "show":
+				case "mostrar":
+
+					break;
+				case "ingresar":
+				case "add":
+				case "añadir":
+					if (args.length > 1) {
 						funds = args[1];
-						System.out.println("Adding funds: "+funds);
+						System.out.println("Adding funds: " + funds);
 						CarteraService.get().addBalance(Integer.decode(funds), event.getAuthor().getId());
-						reply = "Se han añadido "+funds+" centimos.";
-					}else {
+						reply = "Se han añadido " + funds + " centimos.";
+					} else {
 						reply = "Debes escribir el número de centimos a ingresas Ex: '+saldo add <centimos>'";
 					}
-				}catch (Exception e) {
-					reply = BotUtil.get().formateaTexto(BotUtil.COLOR_RED, e.getMessage());
+
+					break;
+				default:
+					reply = "Wops, comando no reconocido. Argumento: " + args[0];
 				}
-				
-				break;
-			default:
-				reply = "Wops, comando no reconocido. Argumento: "+args[0];
+
+			} else {
+				reply = "Escribe '+saldo help' para ver la lista de comandos de saldo";
 			}
-					
-		}else {
-			reply = "Escribe '+saldo help' para ver la lista de comandos de saldo";
+		} catch (Exception e) {
+			reply = BotUtil.get().formateaTexto(BotUtil.COLOR_RED, e.getMessage());
 		}
 		event.reply(reply);
 	}
