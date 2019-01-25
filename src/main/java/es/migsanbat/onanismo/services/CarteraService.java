@@ -1,5 +1,7 @@
 package es.migsanbat.onanismo.services;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.hibernate.Session;
@@ -11,7 +13,7 @@ import es.migsanbat.onanismo.domain.User;
 import es.migsanbat.onanismo.repositories.CarteraRepository;
 import es.migsanbat.onanismo.util.HibernateUtil;
 
-@Transactional
+
 public class CarteraService {
 	private static CarteraService instancia;
 	
@@ -36,7 +38,7 @@ public class CarteraService {
 		return res;
 	}
 	
-	public Integer saldoRestante(Cartera cartera) {
+	public Integer saldoRestante(Cartera cartera) throws Exception {
 		Integer res = null;
 		Config config = ConfigService.get().getConfig();
 		res = CarteraService.get().getSaldoUsable(cartera)-cartera.getUsuario().getOnanismos().size()*config.getCost();
@@ -73,33 +75,29 @@ public class CarteraService {
 		}
 		return res;
 	}
-	public Integer getSaldoUsable(Cartera cartera) {
+	public Integer getSaldoUsable(Cartera cartera) throws Exception {
 		return cartera.getSaldoPropio()+this.getSaldoRecibido(cartera);
 	}
-	public Integer getHucha(Cartera cartera) {
+	public Integer getHucha(Cartera cartera) throws Exception {
 		return cartera.getSaldoPropio()+this.getSaldoDado(cartera);
 	}
-	public Integer getSaldoDado(Cartera cartera) {
+	public Integer getSaldoDado(Cartera cartera) throws Exception {
 		Integer res = 0;
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        session.beginTransaction();
-		for(Transaccion trans:cartera.getSaliente()) {
+		List<Transaccion> saliente = TransaccionService.get().findByBeneficiario(cartera);
+		for(Transaccion trans:saliente) {
 			res+=trans.getBalanza();
 		}
-		session.getTransaction().commit();
 		return res;
 	}
-	public Integer getSaldoRecibido(Cartera cartera) {
+	public Integer getSaldoRecibido(Cartera cartera) throws Exception {
 		Integer res = 0;
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        session.beginTransaction();
-		for(Transaccion trans:cartera.getEntrante()) {
+		List<Transaccion> entrante = TransaccionService.get().findByBeneficiario(cartera);
+		for(Transaccion trans:entrante) {
 			res+=trans.getBalanza();
 		}
-		session.getTransaction().commit();
 		return res;
 	}
-	public String createReply(Cartera cartera) {
+	public String createReply(Cartera cartera) throws Exception {
 		String reply ="		Usuario discordId: "+cartera.getUsuario().getDiscordId()+"\n"
 				+ "		Usuario id: "+cartera.getUsuario().getId()+"\n"
 				+ "		Cartera id: "+cartera.getId()+"\n"
