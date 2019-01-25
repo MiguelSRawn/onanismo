@@ -114,7 +114,8 @@ public class UserService {
 					+ "		Saldo: "+CarteraService.get().saldoRestante(user.getCartera())+"\n"
 					+ "		Onanismos: "+user.getOnanismos().size()+"\n";
 		}catch(Exception e) {
-			throw new Exception("ERROR: Wops, something failed, check the logs");
+			e.printStackTrace();
+			throw new Exception("ERROR: Wops, something failed, check the logs",e);
 		}
 		
 		return reply;
