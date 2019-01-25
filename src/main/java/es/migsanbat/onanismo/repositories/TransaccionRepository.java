@@ -6,9 +6,7 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
-import es.migsanbat.onanismo.domain.Cartera;
 import es.migsanbat.onanismo.domain.Transaccion;
-import es.migsanbat.onanismo.domain.User;
 import es.migsanbat.onanismo.util.BotUtil;
 import es.migsanbat.onanismo.util.HibernateUtil;
 
@@ -48,7 +46,7 @@ public class TransaccionRepository {
 		List<Transaccion> res = null;
 		List<?> aux = null;
 		try {
-			String hql = "from Transaccion t where t.beneficiario = :id";
+			String hql = "from Transaccion t where t.beneficiario.id = :id";
 	        Query<?> query = session.createQuery(hql);
 	        query.setParameter("id", id);
 	        System.out.println("Executing query '"+query.toString()+"'");
@@ -67,7 +65,7 @@ public class TransaccionRepository {
 		List<Transaccion> res = null;
 		List<?> aux = null;
 		try {
-			String hql = "from Transaccion t where t.benefactor = :id";
+			String hql = "from Transaccion t where t.benefactor.id = :id";
 	        Query<?> query = session.createQuery(hql);
 	        query.setParameter("id", id);
 	        System.out.println("Executing query '"+query.toString()+"'");
