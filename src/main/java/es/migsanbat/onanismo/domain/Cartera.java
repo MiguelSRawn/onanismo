@@ -1,14 +1,19 @@
 package es.migsanbat.onanismo.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import es.migsanbat.onanismo.services.CarteraService;
 
 @Entity
 @Table(name = "CARTERA")
@@ -24,21 +29,22 @@ public class Cartera implements Serializable{
 	private Long id;
 	@Column(name="saldoPropio")
 	private Integer saldoPropio;
-	@Column(name="saldoDado")
-	private Integer saldoDado;
-	@Column(name="saldoRecibido")
-	private Integer saldoRecibido;
 	@OneToOne
 	private User usuario;
+	@OneToMany(mappedBy="beneficiario")
+	private List<Transaccion> entrante;
+	@OneToMany(mappedBy="benefactor")
+	private List<Transaccion> saliente;
 	public Cartera() {
 		super();
 	}
 	public Cartera(User user) {
-		saldoDado = 0;
 		saldoPropio = 0;
-		saldoRecibido = 0;
 		usuario = user;
 		id=user.getId();
+
+		entrante = new ArrayList<Transaccion>();
+		saliente = new ArrayList<Transaccion>();
 	}
 	public Long getId() {
 		return id;
@@ -53,16 +59,18 @@ public class Cartera implements Serializable{
 		this.saldoPropio = saldoPropio;
 	}
 	public Integer getSaldoDado() {
-		return saldoDado;
-	}
-	public void setSaldoDado(Integer saldoDado) {
-		this.saldoDado = saldoDado;
+		Integer res = 0;
+		for(Transaccion trans:saliente) {
+			res+=trans.getBalanza();
+		}
+		return res;
 	}
 	public Integer getSaldoRecibido() {
-		return saldoRecibido;
-	}
-	public void setSaldoRecibido(Integer saldoRecibido) {
-		this.saldoRecibido = saldoRecibido;
+		Integer res = 0;
+		for(Transaccion trans:entrante) {
+			res+=trans.getBalanza();
+		}
+		return res;
 	}
 	public User getUsuario() {
 		return usuario;
@@ -76,9 +84,11 @@ public class Cartera implements Serializable{
 	public String createReply() {
 		String reply ="		Usuario discordId: "+this.getUsuario().getDiscordId()+"\n"
 				+ "		Usuario id: "+this.getUsuario().getId()+"\n"
-				+ "		this id: "+this.getId()+"\n"
-				+ "		Saldo propio: "+this.getSaldoPropio()+"\n"
-				+ "		Saldo dado: "+this.getSaldoDado()+"\n";
+				+ "		Cartera id: "+this.getId()+"\n"
+				+ "		Hucha: "+this.getHucha()+"\n"
+				+ "		Saldo restante: "+CarteraService.get().saldoRestante(this)+"\n"
+				+ "		Saldo dado: "+this.getSaldoDado()+"\n"
+				+ "		Saldo recibido: "+this.getSaldoRecibido()+"\n";
 		return reply;
 	}
 	public Integer getSaldoUsable() {
@@ -87,5 +97,18 @@ public class Cartera implements Serializable{
 	public Integer getHucha() {
 		return this.getSaldoPropio()+this.getSaldoDado();
 	}
+	public List<Transaccion> getEntrante() {
+		return entrante;
+	}
+	public void setEntrante(List<Transaccion> entrante) {
+		this.entrante = entrante;
+	}
+	public List<Transaccion> getSaliente() {
+		return saliente;
+	}
+	public void setSaliente(List<Transaccion> saliente) {
+		this.saliente = saliente;
+	}
+	
 	
 }

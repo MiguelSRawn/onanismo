@@ -62,10 +62,8 @@ public class UserService {
 		
 		
 		res.setDiscordId(discordId);
-		res.setEntrante(new ArrayList<Transaccion>());
 		res.setName(name);
 		res.setOnanismos(new ArrayList<Onanismo>());
-		res.setSaliente(new ArrayList<Transaccion>());
 		res = this.persist(res);
 		
 		cartera = new Cartera(res);

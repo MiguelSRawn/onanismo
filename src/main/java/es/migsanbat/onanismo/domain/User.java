@@ -38,10 +38,7 @@ public class User implements Serializable {
 	@OneToOne(cascade = CascadeType.MERGE,mappedBy="usuario")
 	@PrimaryKeyJoinColumn
 	private Cartera cartera;
-	@OneToMany(mappedBy="beneficiario")
-	private List<Transaccion> entrante;
-	@OneToMany(mappedBy="benefactor")
-	private List<Transaccion> saliente;
+	
 
 
 	public Long getId() {
@@ -73,18 +70,6 @@ public class User implements Serializable {
 	}
 	public void setCartera(Cartera cartera) {
 		this.cartera = cartera;
-	}
-	public List<Transaccion> getEntrante() {
-		return entrante;
-	}
-	public void setEntrante(List<Transaccion> entrante) {
-		this.entrante = entrante;
-	}
-	public List<Transaccion> getSaliente() {
-		return saliente;
-	}
-	public void setSaliente(List<Transaccion> saliente) {
-		this.saliente = saliente;
 	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;

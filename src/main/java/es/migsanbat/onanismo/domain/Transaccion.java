@@ -26,9 +26,9 @@ public class Transaccion implements Serializable{
 	@Column(name="id")
 	private Long id;
 	@ManyToOne()
-	private User beneficiario;
+	private Cartera beneficiario;
 	@ManyToOne()
-	private User benefactor;
+	private Cartera benefactor;
 	@Column(name="balanza")
 	private Integer balanza;
 	public Transaccion() {
@@ -40,16 +40,16 @@ public class Transaccion implements Serializable{
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public User getBeneficiario() {
+	public Cartera getBeneficiario() {
 		return beneficiario;
 	}
-	public void setBeneficiario(User beneficiario) {
+	public void setBeneficiario(Cartera beneficiario) {
 		this.beneficiario = beneficiario;
 	}
-	public User getBenefactor() {
+	public Cartera getBenefactor() {
 		return benefactor;
 	}
-	public void setBenefactor(User benefactor) {
+	public void setBenefactor(Cartera benefactor) {
 		this.benefactor = benefactor;
 	}
 	public Integer getBalanza() {

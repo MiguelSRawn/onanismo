@@ -22,30 +22,6 @@ public class CarteraService {
 		return res;
 	}
 	
-	@Deprecated
-	public Cartera removeBalance(Integer num,String discordId) throws Exception {
-		Cartera res;
-		Integer saldoPropio, saldoRecibido, subAux=0;
-		System.out.println("removeBalance(): "+num.toString()+", "+discordId);
-		res = findOneByDiscordId(discordId);
-		saldoRecibido = res.getSaldoRecibido();
-		saldoPropio = res.getSaldoPropio();
-		saldoRecibido = saldoRecibido-num;
-		if(saldoRecibido<0) {
-			subAux = Math.abs(saldoRecibido);
-			saldoRecibido = 0;
-		}
-		if(subAux>0) {
-			saldoPropio = saldoPropio-subAux;
-		}
-		if(saldoPropio<0) {
-			throw new Exception("Not enought funds");
-		}
-		res.setSaldoRecibido(saldoRecibido);
-		res.setSaldoPropio(saldoPropio);
-		res = saveOrUpdate(res);
-		return res;
-	}
 	public Integer saldoRestante(Cartera cartera) {
 		Integer res = null;
 		Config config = ConfigService.get().getConfig();
