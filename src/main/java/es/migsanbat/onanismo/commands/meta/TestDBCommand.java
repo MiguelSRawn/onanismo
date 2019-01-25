@@ -37,7 +37,7 @@ public class TestDBCommand extends Command {
 			
 		}catch (Exception e) {
 			event.reply(BotUtil.get().formateaTexto(BotUtil.COLOR_RED, "ERROR: Wops, something failed, check the logs"));
-			System.err.println(e.getMessage()+", "+e);
+			e.printStackTrace();
 		}
 		
 		

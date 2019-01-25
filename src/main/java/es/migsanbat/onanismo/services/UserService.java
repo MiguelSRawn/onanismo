@@ -113,7 +113,7 @@ public class UserService {
 					+ "		Hucha: "+user.getCartera().getHucha()+"\n"
 					+ "		Saldo: "+CarteraService.get().saldoRestante(user.getCartera())+"\n"
 					+ "		Onanismos: "+user.getOnanismos().size()+"\n";
-		}catch(Exception ignore) {
+		}catch(Exception e) {
 			throw new Exception("ERROR: Wops, something failed, check the logs");
 		}
 		

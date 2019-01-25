@@ -79,7 +79,7 @@ public class UserCommand extends Command {
 				reply = "Escribe '+user help' para ver la lista de comandos de user";
 			}
 		} catch (Exception e) {
-			System.err.println(e.getMessage()+", "+e);
+			e.printStackTrace();
 			reply = BotUtil.get().formateaTexto(BotUtil.COLOR_RED, e.getMessage());
 		}
 		event.reply(reply);

@@ -53,7 +53,7 @@ public class OnanismoCommand extends Command {
 				reply = "Escribe '+saldo help' para ver la lista de comandos de saldo";
 			}
 		}catch (Exception e) {
-			System.err.println(e.getMessage()+", "+e);
+			e.printStackTrace();
 			reply = BotUtil.get().formateaTexto(BotUtil.COLOR_RED, e.getMessage());
 		}
 		
