@@ -106,6 +106,7 @@ public class UserService {
 		return user;
 	}
 	public String createReply(User user) throws Exception {
+		System.out.println("Replying");
 		String reply="";
 		try {
 			reply ="		Nombre: "+user.getName()+"\n"
