@@ -78,21 +78,25 @@ public class CarteraService {
 	}
 	public Integer getSaldoDado(Cartera cartera) {
 		Integer res = 0;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
 		for(Transaccion trans:cartera.getSaliente()) {
 			res+=trans.getBalanza();
 		}
+		session.getTransaction().commit();
 		return res;
 	}
 	public Integer getSaldoRecibido(Cartera cartera) {
 		Integer res = 0;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
 		for(Transaccion trans:cartera.getEntrante()) {
 			res+=trans.getBalanza();
 		}
+		session.getTransaction().commit();
 		return res;
 	}
 	public String createReply(Cartera cartera) {
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        session.beginTransaction();
 		String reply ="		Usuario discordId: "+cartera.getUsuario().getDiscordId()+"\n"
 				+ "		Usuario id: "+cartera.getUsuario().getId()+"\n"
 				+ "		Cartera id: "+cartera.getId()+"\n"
@@ -100,7 +104,6 @@ public class CarteraService {
 				+ "		Saldo restante: "+this.saldoRestante(cartera)+"\n"
 				+ "		Saldo dado: "+CarteraService.get().getSaldoDado(cartera)+"\n"
 				+ "		Saldo recibido: "+CarteraService.get().getSaldoRecibido(cartera)+"\n";
-		session.getTransaction().commit();
 		return reply;
 	}
 }
