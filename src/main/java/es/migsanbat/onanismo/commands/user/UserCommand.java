@@ -82,6 +82,7 @@ public class UserCommand extends Command {
 				reply = "Escribe '+user help' para ver la lista de comandos de user";
 			}
 		} catch (Exception e) {
+			System.out.println("Wops");
 			e.printStackTrace();
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			session.getTransaction().rollback();
