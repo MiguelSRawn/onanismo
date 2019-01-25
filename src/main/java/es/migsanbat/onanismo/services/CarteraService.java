@@ -33,9 +33,12 @@ public class CarteraService {
 	}
 	
 	public Integer saldoRestante(Cartera cartera) {
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
 		Integer res = null;
 		Config config = ConfigService.get().getConfig();
 		res = cartera.getSaldoUsable()-cartera.getUsuario().getOnanismos().size()*config.getCost();
+		session.getTransaction().commit();
 		return res;
 	}
 
