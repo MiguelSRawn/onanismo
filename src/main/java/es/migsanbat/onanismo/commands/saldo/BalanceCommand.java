@@ -56,6 +56,7 @@ public class BalanceCommand extends Command {
 				reply = "Escribe '+saldo help' para ver la lista de comandos de saldo";
 			}
 		} catch (Exception e) {
+			System.err.println(e.getMessage()+", "+e);
 			reply = BotUtil.get().formateaTexto(BotUtil.COLOR_RED, e.getMessage());
 		}
 		event.reply(reply);
