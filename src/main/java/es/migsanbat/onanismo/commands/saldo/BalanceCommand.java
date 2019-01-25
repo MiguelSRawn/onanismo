@@ -24,6 +24,7 @@ public class BalanceCommand extends Command {
 		String[] args = event.getArgs().split(" ");
 		String funds;
 		String reply = "";
+		System.out.println("execute(): "+this.name+" "+event.getArgs().toString());
 		try {
 			if (args.length > 0) {
 				switch (args[0]) {
