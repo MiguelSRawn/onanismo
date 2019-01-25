@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <config>
-	<token>TOKEN</token>
-	<ownerId>OWNERID</ownerId>
+	<token></token>
+	<ownerId></ownerId>
 	<cost>20</cost>
+	<mantenimiento>true</mantenimiento>
 </config>

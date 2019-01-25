@@ -34,7 +34,7 @@ public class BotLauncher {
 			System.out.println("Loading with config: \n"
 					+ "Token: "+token+" \n"
 					+ "OwnerId: "+ownerId+" \n"
-					+ "Coste: "+coste.toString()
+					+ "Coste: "+coste.toString()+" \n"
 					+ "Mantenimiento: "+String.valueOf(mantenimiento));
 			/*
 			 * Inicio del bot
