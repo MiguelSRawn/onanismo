@@ -1,5 +1,7 @@
 package es.migsanbat.onanismo.services;
 
+import javax.transaction.Transactional;
+
 import org.hibernate.Session;
 
 import es.migsanbat.onanismo.domain.Cartera;
@@ -9,6 +11,7 @@ import es.migsanbat.onanismo.domain.User;
 import es.migsanbat.onanismo.repositories.CarteraRepository;
 import es.migsanbat.onanismo.util.HibernateUtil;
 
+@Transactional
 public class CarteraService {
 	private static CarteraService instancia;
 	
