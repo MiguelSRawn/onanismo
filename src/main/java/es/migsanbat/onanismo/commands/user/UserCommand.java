@@ -23,11 +23,12 @@ public class UserCommand extends Command {
 
 	@Override
 	protected void execute(CommandEvent event) {
-		String[] args = event.getArgs().split(" ");
+		String[] args;
 		User user;
 		String reply = "";
 		try {
-			if (args.length > 0) {
+			if (event.getArgs()!=null) {
+				args = event.getArgs().split(" ");
 				switch (args[0]) {
 				case "":
 					reply = "Escribe '+user help' para ver la lista de comandos de user";
