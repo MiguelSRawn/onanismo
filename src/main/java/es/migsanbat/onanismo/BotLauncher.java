@@ -13,6 +13,7 @@ import es.migsanbat.onanismo.commands.meta.PingCommand;
 import es.migsanbat.onanismo.commands.meta.TestDBCommand;
 import es.migsanbat.onanismo.commands.onanismo.OnanismoCommand;
 import es.migsanbat.onanismo.commands.saldo.BalanceCommand;
+import es.migsanbat.onanismo.commands.saldo.TransactionCommand;
 import es.migsanbat.onanismo.commands.user.UserCommand;
 import es.migsanbat.onanismo.domain.Config;
 import es.migsanbat.onanismo.services.ConfigService;
@@ -52,6 +53,7 @@ public class BotLauncher {
 			builder.addCommands(new TestDBCommand(meta));
 			//Comandos Saldo
 			builder.addCommand(new BalanceCommand(currency,mantenimiento));
+			builder.addCommand(new TransactionCommand(currency,mantenimiento));
 			//Comandos usuarios
 			builder.addCommand(new UserCommand(users,mantenimiento));
 			//Comandos onanismo
