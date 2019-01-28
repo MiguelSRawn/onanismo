@@ -81,7 +81,7 @@ public class CarteraService {
 	}
 	public Integer getSaldoDado(Cartera cartera) throws Exception {
 		Integer res = 0;
-		List<Transaccion> saliente = TransaccionService.get().findByBeneficiario(cartera);
+		List<Transaccion> saliente = TransaccionService.get().findByBenefactor(cartera);
 		for(Transaccion trans:saliente) {
 			res+=trans.getBalanza();
 		}
