@@ -30,7 +30,7 @@ public class TransactionCommand extends Command {
 		String reply = "";
 		System.out.println("execute(): "+this.name+" "+event.getArgs().toString());
 		try {
-			if (event.getArgs()!=null&&event.getArgs().split(" ").length>2) {
+			if (event.getArgs()!=null&&event.getArgs().split(" ").length>=2) {
 				args = event.getArgs().split(" ");
 				beneficiario = args[0];
 				benefactor = event.getAuthor().getId();
