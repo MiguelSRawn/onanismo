@@ -75,6 +75,8 @@ public class OnanismoCommand extends Command {
 									break;
 							}
 							event.getJDA().getTextChannelById("538388638447304704").sendMessage("Esta va por "+message);
+						}else {
+							reply = "Kuristina se ha tocado pero algo falla y no he podido reconer por quien iba, soooorry, que Miguel me ha programado estando pedo. :(";
 						}
 					break;
 				default:
