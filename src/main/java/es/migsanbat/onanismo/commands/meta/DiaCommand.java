@@ -22,9 +22,33 @@ public class DiaCommand extends Command {
 	protected void execute(CommandEvent event) {
 		DayOfWeek dia=LocalDate.now().now(ZoneId.of("UTC+1")).getDayOfWeek();
 		String reply = "";
-		switch (dia) {
-		case TUESDAY:
-			reply = "MARTES";
+		if(event.getAuthor().getId().equals("190006578785681408")) {
+			String message = "";
+			
+			switch(dia) {
+				case MONDAY:
+					message = "Pablo";
+					break;
+				case TUESDAY:
+					message = "Agus";
+					break;
+				case WEDNESDAY:
+					message = "Dani";
+					break;
+				case THURSDAY:
+					message = "RafaG";
+					break;
+				case FRIDAY:
+					message = "Andy";
+					break;
+				case SATURDAY:
+					message = "Miguel";
+					break;
+				case SUNDAY:
+					message = "RafaJ";
+					break;
+			}
+			event.getJDA().getTextChannelById("538388638447304704").sendMessage("Esta va por "+message);
 		}
 		event.reply(reply);	
 	}
