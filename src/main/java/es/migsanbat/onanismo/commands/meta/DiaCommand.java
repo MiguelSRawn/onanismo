@@ -25,7 +25,7 @@ public class DiaCommand extends Command {
 		try {
 			if(event.getAuthor().getId().equals("190006578785681408")) {
 				String message = "";
-				
+				reply = "enas miguel";
 				switch(dia) {
 					case MONDAY:
 						message = "Pablo";
