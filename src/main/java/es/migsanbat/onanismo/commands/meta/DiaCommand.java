@@ -1,5 +1,6 @@
 package es.migsanbat.onanismo.commands.meta;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.ZoneId;
 
@@ -19,7 +20,13 @@ public class DiaCommand extends Command {
 
 	@Override
 	protected void execute(CommandEvent event) {
-		event.reply(LocalDate.now().now(ZoneId.of("UTC+1")).getDayOfWeek().toString());	
+		DayOfWeek dia=LocalDate.now().now(ZoneId.of("UTC+1")).getDayOfWeek();
+		String reply = "";
+		switch (dia) {
+		case TUESDAY:
+			reply = "MARTES";
+		}
+		event.reply(reply);	
 	}
 
 }
