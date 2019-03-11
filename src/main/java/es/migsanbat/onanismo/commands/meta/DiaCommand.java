@@ -19,7 +19,7 @@ public class DiaCommand extends Command {
 
 	@Override
 	protected void execute(CommandEvent event) {
-		event.reply(LocalDate.now().now(ZoneId.of("UTC+1")).toString());	
+		event.reply(LocalDate.now().now(ZoneId.of("UTC+1")).getDayOfWeek().toString());	
 	}
 
 }
