@@ -1,6 +1,7 @@
 package es.migsanbat.onanismo.commands.meta;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
 
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
@@ -18,7 +19,7 @@ public class DiaCommand extends Command {
 
 	@Override
 	protected void execute(CommandEvent event) {
-		event.reply(LocalDate.now().getDayOfWeek().toString());	
+		event.reply(LocalDate.now().now(ZoneId.of("UTC+1")).toString());	
 	}
 
 }
