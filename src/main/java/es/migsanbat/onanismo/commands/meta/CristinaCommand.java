@@ -27,7 +27,9 @@ public class CristinaCommand extends Command {
 		for(Onanismo ona:onas) {
 			array[ona.getFecha().toInstant().atZone(ZoneId.of("UTC+1")).toLocalDate().getDayOfWeek().getValue()-1]++;
 		}		
-		event.reply(array.toString());
+		for(int i:array) {
+			event.reply(i+"");
+		}
 	}
 
 }
