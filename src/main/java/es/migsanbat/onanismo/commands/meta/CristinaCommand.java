@@ -23,13 +23,11 @@ public class CristinaCommand extends Command {
 	@Override
 	protected void execute(CommandEvent event) {
 		List<Onanismo> onas =UserService.get().findOneByDiscordId("543440071567736832").getOnanismos();
-		if(onas.isEmpty()||onas==null) {
-			event.reply("Nada encontrado");
-		}else {
-			for(Onanismo ona:onas) {
-				event.reply(ona.getFecha().toInstant().atZone(ZoneId.of("UTC+1")).toLocalDate().getDayOfWeek().toString());
-			}
-		}
+		int[] array =new int[7];
+		for(Onanismo ona:onas) {
+			array[ona.getFecha().toInstant().atZone(ZoneId.of("UTC+1")).toLocalDate().getDayOfWeek().getValue()-1]++;
+		}		
+		event.reply(array.toString());
 	}
 
 }
