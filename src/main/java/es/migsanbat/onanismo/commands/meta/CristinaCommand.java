@@ -12,7 +12,7 @@ import es.migsanbat.onanismo.services.UserService;
 public class CristinaCommand extends Command {
 
 	public CristinaCommand(Category meta,boolean mantenimiento) {
-		this.name = "dia";
+		this.name = "Cris";
 		this.category = meta;
 		this.aliases = new String[] {  };
 		this.help = "";
