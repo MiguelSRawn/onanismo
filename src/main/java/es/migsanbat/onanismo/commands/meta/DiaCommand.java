@@ -49,7 +49,13 @@ public class DiaCommand extends Command {
 						message = "RafaJ";
 						break;
 				}
-				event.getJDA().getTextChannelById("538388638447304704").sendMessage("Esta va por "+message);
+				if(event.getJDA().getTextChannelById("538388638447304704")==null) {
+					reply="No encuentro el canal";
+				}else {
+					reply="Uhmm";
+					event.getJDA().getTextChannelById("538388638447304704").sendMessage("mensaje");
+				}
+				
 			}
 			event.reply(reply);	
 		}catch (Exception e) {
