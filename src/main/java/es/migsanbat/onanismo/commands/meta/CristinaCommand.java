@@ -1,5 +1,6 @@
 package es.migsanbat.onanismo.commands.meta;
 
+import java.time.DayOfWeek;
 import java.time.ZoneId;
 import java.util.List;
 
@@ -27,8 +28,8 @@ public class CristinaCommand extends Command {
 		for(Onanismo ona:onas) {
 			array[ona.getFecha().toInstant().atZone(ZoneId.of("UTC+1")).toLocalDate().getDayOfWeek().getValue()-1]++;
 		}		
-		for(int i:array) {
-			event.reply(i+"");
+		for(int i=0;i<7;i++) {
+			event.reply(DayOfWeek.of(i+1).toString()+": "+array[i]);
 		}
 	}
 
