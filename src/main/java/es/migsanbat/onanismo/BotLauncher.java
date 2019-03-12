@@ -9,7 +9,7 @@ import com.jagrosh.jdautilities.command.Command.Category;
 import com.jagrosh.jdautilities.command.CommandClient;
 import com.jagrosh.jdautilities.command.CommandClientBuilder;
 
-import es.migsanbat.onanismo.commands.meta.DiaCommand;
+import es.migsanbat.onanismo.commands.meta.CristinaCommand;
 import es.migsanbat.onanismo.commands.meta.PingCommand;
 import es.migsanbat.onanismo.commands.meta.TestDBCommand;
 import es.migsanbat.onanismo.commands.onanismo.OnanismoCommand;
@@ -52,7 +52,7 @@ public class BotLauncher {
 			// Comandos Meta
 			builder.addCommands(new PingCommand(meta,mantenimiento));
 			builder.addCommands(new TestDBCommand(meta));
-			builder.addCommands(new DiaCommand(meta, mantenimiento));
+			builder.addCommands(new CristinaCommand(meta, mantenimiento));
 			//Comandos Saldo
 			builder.addCommand(new BalanceCommand(currency,mantenimiento));
 			builder.addCommand(new TransactionCommand(currency,mantenimiento));
