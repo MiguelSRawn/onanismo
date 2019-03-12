@@ -1,5 +1,6 @@
 package es.migsanbat.onanismo.commands.meta;
 
+import java.time.ZoneId;
 import java.util.List;
 
 import com.jagrosh.jdautilities.command.Command;
@@ -25,7 +26,9 @@ public class CristinaCommand extends Command {
 		if(onas.isEmpty()||onas==null) {
 			event.reply("Nada encontrado");
 		}else {
-			event.reply(onas.get(0).toString());
+			for(Onanismo ona:onas) {
+				event.reply(ona.getFecha().toInstant().atZone(ZoneId.of("UTC+1")).toLocalDate().getDayOfWeek().toString());
+			}
 		}
 	}
 
