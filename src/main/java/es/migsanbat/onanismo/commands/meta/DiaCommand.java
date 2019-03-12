@@ -54,11 +54,7 @@ public class DiaCommand extends Command {
 				if(event.getJDA().getTextChannelById("538388638447304704")==null) {
 					reply="No encuentro el canal";
 				}else {
-					try {
-						event.getJDA().getTextChannelById("538388638447304704").sendMessage(new MessageBuilder().append("TEST").build());
-					}catch (Exception e) {
-						System.out.println(e.getMessage());
-					}
+					event.getJDA().getTextChannelById("538388638447304704").sendMessage(new MessageBuilder().append("TEST").build()).queue();
 				}
 				
 			}
