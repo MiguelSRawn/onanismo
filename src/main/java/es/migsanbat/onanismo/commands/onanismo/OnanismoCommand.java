@@ -47,37 +47,40 @@ public class OnanismoCommand extends Command {
 						Onanismo ona= OnanismoService.get().fap(event.getAuthor().getId());
 						if(ona==null) {
 							reply = "Saldo insuficiente";
-						}
-						if(event.getAuthor().getId().equals("543440071567736832")) {
-							String message = "";
-							
-							switch(LocalDate.now().getDayOfWeek()) {
-								case MONDAY:
-									message = "Pablo";
-									break;
-								case TUESDAY:
-									message = "Agus";
-									break;
-								case WEDNESDAY:
-									message = "Dani";
-									break;
-								case THURSDAY:
-									message = "RafaG";
-									break;
-								case FRIDAY:
-									message = "Andy";
-									break;
-								case SATURDAY:
-									message = "Miguel";
-									break;
-								case SUNDAY:
-									message = "RafaJ";
-									break;
-							}
-							event.getJDA().getTextChannelById("538388638447304704").sendMessage("Esta va por "+message);
 						}else {
-							reply = "Kuristina se ha tocado pero algo falla y no he podido reconer por quien iba, soooorry, que Miguel me ha programado estando pedo. :(";
+							if(event.getAuthor().getId().equals("543440071567736832")) {
+								String message = "";
+								
+								switch(LocalDate.now().getDayOfWeek()) {
+									case MONDAY:
+										message = "Pablo";
+										break;
+									case TUESDAY:
+										message = "Agus";
+										break;
+									case WEDNESDAY:
+										message = "Dani";
+										break;
+									case THURSDAY:
+										message = "RafaG";
+										break;
+									case FRIDAY:
+										message = "Andy";
+										break;
+									case SATURDAY:
+										message = "Miguel";
+										break;
+									case SUNDAY:
+										message = "RafaJ";
+										break;
+									default:
+										reply = "Kuristina se ha tocado pero algo falla y no he podido reconer por quien iba, soooorry, que Miguel me ha programado estando pedo. :(";
+										break;
+								}
+								event.getJDA().getTextChannelById("538388638447304704").sendMessage("Esta va por "+message);
+							}
 						}
+						
 					break;
 				default:
 					reply = "Wops, comando no reconocido. Argumento: "+args[0];

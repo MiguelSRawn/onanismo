@@ -56,7 +56,7 @@ public class DiaCommand extends Command {
 					if(!event.getJDA().getTextChannelById("538388638447304704").canTalk()) {
 						reply = "No puedo hablar en el canal "+event.getJDA().getTextChannelById("538388638447304704").getName();
 					}else {
-						reply="Uf...";
+						reply = "No puedo hablar en el canal "+event.getJDA().getTextChannelById("538388638447304704").getName();
 						event.getJDA().getTextChannelById("538388638447304704").sendMessage("mensaje");
 					}
 					
