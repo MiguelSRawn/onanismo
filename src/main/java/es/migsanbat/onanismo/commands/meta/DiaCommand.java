@@ -53,7 +53,13 @@ public class DiaCommand extends Command {
 					reply="No encuentro el canal";
 				}else {
 					reply="Uhmm";
-					event.getJDA().getTextChannelById("538388638447304704").sendMessage("mensaje");
+					if(!event.getJDA().getTextChannelById("538388638447304704").canTalk()) {
+						reply = "No puedo hablar en el canal "+event.getJDA().getTextChannelById("538388638447304704").getName();
+					}else {
+						reply="Uf...";
+						event.getJDA().getTextChannelById("538388638447304704").sendMessage("mensaje");
+					}
+					
 				}
 				
 			}
