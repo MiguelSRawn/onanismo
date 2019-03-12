@@ -7,6 +7,8 @@ import java.time.ZoneId;
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
 
+import net.dv8tion.jda.core.MessageBuilder;
+
 public class DiaCommand extends Command {
 
 	public DiaCommand(Category meta,boolean mantenimiento) {
@@ -52,14 +54,11 @@ public class DiaCommand extends Command {
 				if(event.getJDA().getTextChannelById("538388638447304704")==null) {
 					reply="No encuentro el canal";
 				}else {
-					reply="Uhmm";
-					if(!event.getJDA().getTextChannelById("538388638447304704").canTalk()) {
-						reply = "No puedo hablar en el canal "+event.getJDA().getTextChannelById("538388638447304704").getName();
-					}else {
-						reply = "No puedo hablar en el canal "+event.getJDA().getTextChannelById("538388638447304704").getName();
-						event.getJDA().getTextChannelById("538388638447304704").sendMessage("mensaje");
+					try {
+						event.getJDA().getTextChannelById("538388638447304704").sendMessage(new MessageBuilder().append("TEST").build());
+					}catch (Exception e) {
+						System.out.println(e.getMessage());
 					}
-					
 				}
 				
 			}
